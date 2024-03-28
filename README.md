@@ -14,5 +14,5 @@ This repository contains the folder structure of your project. Please adhere to 
 Please keep us updated with your progress by daily email to utkarsh-infosystems@dayalgroup.com
 
 ## NEED HELP
-* **Onboarding Lead**: Rituparna Dey ( rituparna.dey@dayalgroup.com )
+* **Onboarding Lead**: Anil Yadav ( anil.yadav@dayalgroup.com )
 * **Technical Program Lead**: Aditi Gupta ( aditi.gupta@dayalgroup.com )
