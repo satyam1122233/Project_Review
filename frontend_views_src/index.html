@@ -1,1 +1,349 @@
-This is the dummy file
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Student Registration</title>
+
+    <!-- link css -->
+  <link rel="stylesheet" href="style1.css" />
+
+  <!-- link font awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+
+  <!-- link js file -->
+  <!-- <script src="script.js" defer></script> -->
+
+</head>
+
+<body>
+    <div class="container" >
+
+        <header>
+        <h1>Student Registration</h1>
+        </header>
+
+        <nav>
+            <ul class="ul">
+                <li class="li" id="pd">
+                    
+                        <i class="fa fa-circle-o non-tick-one" id="pdIcon" aria-hidden="true"></i>
+                        <!-- <i class="fa fa-check-circle-o tick-one" aria-hidden="true"></i> -->
+                        Personal Details
+                </li>
+                <li id="ad">
+                    
+                        <i class="fa fa-circle-o non-tick-one" id="adIcon" aria-hidden="true"></i>
+                        <!-- <i class="fa fa-check-circle-o tick-one" aria-hidden="true"></i> -->
+                        Address Details
+                      </button>
+
+                </li>
+                <li id="od">
+                    
+                        <i class="fa fa-circle-o non-tick-one" id="odIcon" aria-hidden="false"></i>
+                        <!-- <i class="fa fa-check-circle-o tick-one" aria-hidden="true"></i> -->
+                        Other Details
+                      </button>
+
+                </li>
+            </ul>
+        </nav>
+        <main>
+            <form action="insert.php" method="post">
+                <div class="personaldetails" id="pid">
+                    <section>
+                        <h2>Personal Details</h2>
+                    </section>
+
+
+                    <!-- form-part-1  -->
+
+                    <div class="form-part-1" >
+                        <div class="first-row-p1">
+                            <div class="firstname default-height">
+                                <label for="firstnameid">First Name <span>*</span></label> 
+                                <input type="text" id="firstnameid" name="firstnameid" required>
+
+                            </div>
+                            <div class="lastname default-height">
+                                <label for="lastnameid">Last Name </label> 
+                                <input type="text" id="lastnameid" name="lastnameid" >
+
+                            </div>
+                            <div class="email default-height">
+                                <label for="emailid">Email <span>*</span></label>
+                                <input type="email" id="emailid" name="emailid">
+
+                            </div>
+
+                        </div>
+                        <div class="second-row-p1">
+                            <div class="aadhar default-height">
+                                <label for="aadharid">Aadhar No. <span>*</span></label>
+                                <input type="text" id="aadharid" name="aadharid">
+
+                            </div>
+                            <div class="dobmobile ">
+                                <!-- mobile/dob  -->
+                                <div class="dob default-height">
+                                    <label for="dobid">DOB <span>*</span></label>
+                                    <input type="date" id="dobid" name="dobid">
+                                </div>
+                                <div class="mobile default-height">
+                                    
+                                    <label for="mobileid">Mobile <span>*</span></label>
+                                    
+                                    
+                                    <input type="text" id="mobileid" name="mobileid">
+                                   
+                                </div>
+                            </div>
+
+                            
+                            <div class="gender default-height">
+                                <!-- gender  -->
+                                <div>
+                                <label for="male">Gender <span>*</span></label>
+                                </div>
+
+
+                                <div class="gender-radio" >
+                                <input type="radio" name="gender" id="male" >Male
+                                <input type="radio" name="gender">Female
+                                <input type="radio" name="gender">Other
+                                </div>
+                                
+                            </div>
+
+                        </div>
+                        <div class="third-row-p1">
+                                <div>
+                                <label for="photo"> Upload Photo <span>*</span> </label>
+                                </div>
+
+                                <div class="yes-no-checkbox-container">
+                                  <div class="yes-checkbox-container">
+                                    <input type="radio" name="upload-photo" id="" checked />
+                                    <label for="yes">Yes</label>
+                                  </div>
+                    
+                                  <div class="no-checkbox-container">
+                                    <input type="radio" name="upload-photo" id=""  />
+                                    <label for="no">No</label>
+                                  </div>
+                                </div>
+                    
+                                <div class="upload-photo-input-container">
+                                  <input type="file" name="userphoto" id="user-photo" required />
+                                </div>
+                    
+
+                        </div>
+                        <div class="fourth-row-p1">
+                            <!-- article  -->
+                            <p style="margin-top: 20px">
+                                In order to process your registration, we ask you to provide the
+                                following information. Please note that all fields marked with
+                                (<span>*</span>) are required.
+                              </p>
+
+                        </div>
+                        <div class="fifth-row-p1">
+                            <!-- <div class="btnnext1 default-height gar"> -->
+                            <div class="" onclick="disHide1()">
+                                Next <i class="fa fa-caret-right" aria-hidden="true"></i>
+                            </div>
+                            <!-- </div> -->
+                        </div>
+                    </div>
+                </div><!--close of personaldetails-->
+
+                <!-- ------------------------------  -->
+
+
+
+                <div class="addressdetails" id="aid">
+                    <section>
+                        <h2>Address Details</h2>
+                    </section>
+
+                    <!-- form-part-2  -->
+
+                    <div class="form-part-2" >
+                        <div class="first-row-p2">
+                            <div class="country default-height">
+                                <label for="count">Country<span>*</span></label>
+                                <select name="country" id="count">
+                                    <option value="ind" selected>India</option>
+                                    <option value="swi">Switzerland</option>
+                                    <option value="ger">Germany</option>
+                                    <option value="can">Canada</option>
+                                    <option value="us">United States</option>
+                                    <option value="swe">Sweden</option>
+                                </select>
+
+                            </div>
+                            <div class="state default-height">
+                                <label for="st">State<span>*</span></label>
+                                <select name="state" id="st">
+                                    <option value="utt" selected>Uttar Pradesh</option>
+                                    <option value="ker">Kerala</option>
+                                    <option value="raj">Rajasthan</option>
+                                    <option value="goa">Goa</option>
+                                    <option value="pun">Punjab</option>
+                                    <option value="him">Himachal Pradesh</option>
+                                </select>
+
+                            </div>
+                            <div class="city default-height">
+                                <label for="city">City<span>*</span></label>
+                            <select name="city" id="city">
+                                <option value="mee" selected>Meerut</option>
+                                <option value="del">Delhi</option>
+                                <option value="ban">Bangalore</option>
+                                <option value="kol">Kolkata</option>
+                                <option value="che">Chennai</option>
+                                <option value="pune">Pune</option>
+                            </select>
+
+                            </div>
+
+                        </div>
+
+                        <div class="second-row-p2">
+                            <div class="street default-height gar">
+                                <label for="street">Street</label><span>*</span><br>
+                                <textarea id="street" name="street" cols="100%" rows="8%"></textarea>
+                            </div>
+                            <div class=" gar default-height">
+                                <!-- mobile/dob  -->
+                            </div>
+                            <div class="landmarkpincode gar default-height">
+                                <div class="landmark default-height">
+                                    <label for="land">Landmark<span>*</span></label>
+                                    <input type="text" id="land" name="land">
+                                </div>
+                                <div class="pincode default-height">
+                                    <label for="pin">Pincode<span>*</span></label>
+                                <input type="tel" id="pin" name="pin" pattern="[0-9]{3}[0-9]{3}" placeholder="123456">
+
+                                </div>
+                                
+                            </div>
+                            <div class="gar default-height">
+
+                            </div>
+                            
+
+                        </div>
+                        
+                        <div class="fourth-row-p2">
+                            <!-- article  -->
+                            <p style="margin-top: 20px">
+                                In order to process your registration, we ask you to provide the
+                                following information. Please note that all fields marked with
+                                (<span>*</span>) are required.
+                              </p>
+
+                        </div>
+                        <div class="fifth-row-p2">
+                            <!-- buttons  -->
+                            <div onclick="disShow1()" class="backButton">
+                                <i class="fa fa-caret-left" aria-hidden="true"></i>
+                                Back
+                        </div>
+                              <div class="address-details-next-div" onclick="disHide2()">
+                                Next
+                                <i class="fa fa-caret-right" aria-hidden="true"></i>
+                              </div>
+
+                        </div>
+                    </div>
+            </div><!--close of addressdetails-->
+
+            
+            <!-- ------------------------------  -->
+
+
+
+            <div class="otherdetails" id="oid">
+                <section>
+                     <h2>Other Details</h2>
+                </section>
+
+                <!-- form-part-3  -->
+
+                <div class="form-part-3" >
+                    <div class="first-row-p3">
+                        <div class="username default-height">
+                            <label for="">Username <span>*</span></label>
+                            <input type="text" name="username" id="">
+
+                        </div>
+                        <div class="password default-height">
+                            <label for="">Password <span>*</span></label>
+                            <input type="password" name="password" id="">
+
+                        </div>
+                        <div class="email">
+
+                        </div>
+
+                    </div>
+                    <div class="second-row-p3">
+                        <div class="Hobbiex default-height">
+
+                            <label for="">Hobbies<span>*</span></label>
+                        </div>
+                        <div class="hobbies_flex default-height">
+                            <input class="input_hobbies radio_color" type="checkbox" name="hobbies" value="fish">Fishing
+                            <input class="input_hobbies radio_color" type="checkbox" name="hobbies" value="golf">Golf
+                            <input class="input_hobbies radio_color" type="checkbox" name="hobbies" value="hike">Hiking
+                            <input class="input_hobbies radio_color" type="checkbox" name="hobbies" value="photo">Photography
+                            <input class="input_hobbies radio_color" type="checkbox" name="hobbies" value="gard">Gardening
+                        </div>
+
+                    </div>
+                    
+                    <div class="fourth-row-p3">
+                                <!-- article  -->
+                                <p>In Order to process your registration, we ask you to provide the following information.
+                                    Please note that
+                                    all fields marked with (<span>*</span>) are required.</p>
+    
+
+                    </div>
+                    <div class="fifth-row-p3">
+                                <!-- divs  -->
+                                <div class="default-height">
+                                <div onclick="disShow2()" class="backButton">
+                                    <i class="fa fa-caret-left" aria-hidden="true"></i>
+                                    Back
+                                  </div>
+                                </div>
+                                <div class="default-height">
+                                  <button type="submit" class="other-details-submit-button" id="submitid" onclick="disHide3()">
+                                    Submit
+                                    <i class="fa fa-check" aria-hidden="true"></i>
+                                  </button>
+                                </div>
+                    </div>
+                </div>
+            </div><!--close of otherdetails-->
+
+            </form>
+        </main>
+        <div id="fid">
+            <p>Your data is successfully saved!</p>
+            <br>
+            <a href="listview.html">View</a>
+        </div>
+
+    </div> <!--container close-->
+
+    <script type="text/javascript" src="script.js"></script>
+</body>
+</html>
