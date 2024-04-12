@@ -78,7 +78,7 @@ div.second-row-p1 > * {
     margin-top: 20px; 
 }
 div.second-row-p1 > *:last-child {
-    margin-right: 0; /* Remove margin for the last item */
+    margin-right: 0; 
 }
 
 div.dobmobile{
