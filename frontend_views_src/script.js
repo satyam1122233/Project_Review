@@ -20,7 +20,7 @@ function disHide1() {
     }
     
      if (document.querySelector('.yes-checkbox-container input[type="radio"]').checked && isChooseFileInputEmpty()) {
-            alert('This field is required');
+        document.getElementById("uploadPhotoError").innerHTML = "Please upload a photo";
             return;
         }
 
@@ -158,19 +158,22 @@ function validateFirstName() {
 
     // Check if the input is empty or contains non-character values
     if (firstNameValue === '') {
-        alert('First Name is required');
+        document.getElementById("nameError").innerHTML = "First Name is required";
+        event.preventDefault();
         highlightInvalidField(firstNameInput);
         return false;
     } else if (!lettersRegex.test(firstNameValue)) {
-        alert('First Name should contain only letters');
+        document.getElementById("nameError").innerHTML = "First Name should contain only letters";
         highlightInvalidField(firstNameInput);
-
-
         return false;
-    } else {
+
+    } 
+    
+        document.getElementById("nameError").innerHTML = ""; // Clear error 
+
         return true;
     }
-}
+
 
 
 // Validate Last Name
@@ -206,14 +209,17 @@ function validateEmail() {
 
     // Check if the input is empty or does not match the email format
     if (emailValue === '') {
-        alert('Email is required');
+        document.getElementById("emailError").innerHTML = "Email is required";
+        event.preventDefault();
         highlightInvalidField(emailInput);
         return false;
     } else if (!emailRegex.test(emailValue)) {
-        alert('Invalid email format');
+        document.getElementById("emailError").innerHTML = "Please enter a valid email";
         highlightInvalidField(emailInput);
         return false;
     } else {
+        document.getElementById("emailError").innerHTML = ""; // Clear error 
+
         return true;
     }
 }
@@ -228,14 +234,16 @@ function validateAadhar() {
 
     // Check if the input is empty or does not match the Aadhar number format
     if (aadharValue === '') {
-        alert('Aadhar Number is required');
+        document.getElementById("aadharError").innerHTML = "Please enter aadhar number";
 highlightInvalidField(aadharInput);
         return false;
     } else if (!aadharRegex.test(aadharValue)) {
-        alert('Aadhar Number should contain 12 digits');
+        document.getElementById("aadharError").innerHTML = "Please enter a valid Aadhar number of 12 digits";
         highlightInvalidField(aadharInput);
         return false;
     } else {
+        document.getElementById("aadharError").innerHTML = "";
+
         return true;
     }
 }
@@ -249,10 +257,12 @@ function validateDOB() {
 
     // Check if the input is empty
     if (dobValue === '') {
-        alert('Date of Birth is required');
+        document.getElementById("dobError").innerHTML = "Date of Birth is required";
         highlightInvalidField(dobInput);
         return false;
     } else {
+        document.getElementById("dobError").innerHTML = "";
+
         return true;
     }
 }
@@ -267,11 +277,11 @@ function validateMobile() {
 
     // Check if the input is empty or does not match the mobile number format
     if (mobileValue === '') {
-        alert('Mobile Number is required');
+        document.getElementById("mobileError").innerHTML = "Mobile Number is required";
         highlightInvalidField(mobileInput);
         return false;
     } else if (!mobileRegex.test(mobileValue)) {
-        alert('Mobile Number should contain 10 digits');
+        document.getElementById("mobileError").innerHTML = "Mobile Number should contain 10 digits";
         highlightInvalidField(mobileInput);
         return false;
     } else {
@@ -294,7 +304,7 @@ function validateGender() {
 
     // If no gender is selected, show an alert
     if (!genderSelected) {
-        alert('Gender is required');
+        document.getElementById("genderError").innerHTML = "Gender is required";
 
         return false;
     }else{
@@ -303,7 +313,7 @@ function validateGender() {
     }
 
 }
-
+uploadPhotoError
 
 function isRadioButtonChecked() {
     // Iterate through each radio button
@@ -379,14 +389,7 @@ function isChooseFileInputEmpty() {
 
 //address//
 
-// Add event listeners to input fields in Address Details to remove red border when filled
-document.querySelectorAll('#count, #st, #city, #street, #land, #pin').forEach(function(input) {
-    input.addEventListener('input', function() {
-        if (input.value.trim() !== "") {
-            input.style.border = ""; // Remove red border
-        }
-    });
-});
+
 
 // Validate Address Details fields
 function validateAddressDetails() {
@@ -505,17 +508,6 @@ function validateHobbies() {
     return true;
 }
 
-// Add event listeners to input fields in Personal Details to remove red border when filled
-document.querySelectorAll('.username input[type="text"], .password input[type="password"], #firstnameid, #emailid, #aadharid, #dobid, #mobileid').forEach(function(input) {
-    input.addEventListener('input', function() {
-        if (input.value.trim() !== "") {
-            input.style.border = ""; // Remove red border
-        }
-    });
-});
-
-
-
 
 
 
@@ -527,3 +519,86 @@ function highlightInvalidField(input) {
     input.style.border = "1px solid red"; // Add red border to the input field
     input.focus(); // Set focus to the input field for immediate correction
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// Add event listeners to input fields in Personal Details and Address Details to remove red border and error message when filled
+document.querySelectorAll('#firstnameid , #aadharid, #mobileid, #count, #st, #city, #street, #land, #pin').forEach(function(input) {
+    input.addEventListener('input', function() {
+        // When the user types or interacts with the input field, remove the red error message and border
+        var errorDiv = input.nextElementSibling; // Assuming the error message div follows the input field
+        if (errorDiv) {
+            errorDiv.innerHTML = ""; // Clear the error message
+        }
+        input.style.border = ""; // Remove the red border
+    });
+});
+
+document.getElementById('emailid').addEventListener('input', function() {
+    // When the user types or interacts with the email input field, remove the red error message and border
+    var errorDiv = document.getElementById('emailError');
+    if (errorDiv) {
+        errorDiv.innerHTML = ""; // Clear the error message
+    }
+    this.style.border = ""; // Remove the red border
+});
+document.getElementById('dobid').addEventListener('input', function() {
+    // When the user types or interacts with the email input field, remove the red error message and border
+    var errorDiv = document.getElementById('dobError');
+    if (errorDiv) {
+        errorDiv.innerHTML = ""; // Clear the error message
+    }
+    this.style.border = ""; // Remove the red border
+});
+document.getElementById('mobileid').addEventListener('input', function() {
+    // When the user types or interacts with the email input field, remove the red error message and border
+    var errorDiv = document.getElementById('mobileError');
+    if (errorDiv) {
+        errorDiv.innerHTML = ""; // Clear the error message
+    }
+    this.style.border = ""; // Remove the red border
+});
+document.querySelectorAll('input[type="radio"][name="gender"]').forEach(function(radio) {
+    radio.addEventListener('change', function() {
+        // When the user interacts with the radio buttons, remove the error message
+        var errorDiv = document.getElementById('genderError');
+        if (errorDiv) {
+            errorDiv.innerHTML = ""; // Clear the error message
+        }
+    });
+});
+// Handle change event for radio buttons
+document.querySelectorAll('input[type="radio"][name="upload-photo"]').forEach(function(radio) {
+    radio.addEventListener('change', function() {
+        // When the user selects an option, clear the error message
+        var errorDiv = document.getElementById('uploadPhotoError');
+        if (errorDiv) {
+            errorDiv.innerHTML = ""; // Clear the error message
+        }
+    });
+});
+
+// Handle input event for file input
+document.getElementById('user-photo').addEventListener('input', function() {
+    // When the user interacts with the file input, clear the error message
+    var errorDiv = document.getElementById('uploadPhotoError');
+    if (errorDiv) {
+        errorDiv.innerHTML = ""; // Clear the error message
+    }
+});
+
+
+

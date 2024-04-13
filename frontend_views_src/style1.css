@@ -53,16 +53,14 @@ div.first-row-p1 > *:last-child {
 
 .email input{
     cursor: pointer;
-    display: inline-block;
-    /* Change background image to menu icon */
-    background: url(email_Img.png) no-repeat;
-    background-size: contain;
-    padding-left: 25px; 
+    
 
 
 }
 
-
+.emailIcon{
+    display: flex;
+}
 
 
 div.second-row-p1{
@@ -78,7 +76,7 @@ div.second-row-p1 > * {
     margin-top: 20px; 
 }
 div.second-row-p1 > *:last-child {
-    margin-right: 0; 
+    margin-right: 0; /* Remove margin for the last item */
 }
 
 div.dobmobile{
@@ -87,17 +85,33 @@ div.dobmobile{
 }
 
 .mobile{
-    margin-left: 10px;
+    margin-left: 20px;
 }
 .mobile input{
     cursor: pointer;
-    display: inline-block;
     /* Change background image to menu icon */
-    background: url(call_Img.png) no-repeat;
-    background-size: contain;
-    padding-left: 25px; 
 
 }
+.mobileIcon{
+    display: flex;
+}
+.Icon {
+    background-color: #ccc;
+    padding-left: 3px;
+    padding-right: 3px;
+    border-radius: 2px;
+   
+}
+
+
+
+
+
+
+
+
+
+
 
 .aadhar label,
 .dobmobile label{
@@ -432,3 +446,13 @@ span{
 
 
 
+
+
+
+
+
+
+.error {
+    color: red;
+    font-size: 0.8em;
+}

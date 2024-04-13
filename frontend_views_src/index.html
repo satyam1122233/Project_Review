@@ -66,6 +66,9 @@
                             <div class="firstname default-height">
                                 <label for="firstnameid">First Name <span>*</span></label> 
                                 <input type="text" id="firstnameid" name="firstnameid" required>
+                                <div id="nameError" class="error"></div> <!-- Error message for First Name -->
+
+
 
                             </div>
                             <div class="lastname default-height">
@@ -75,7 +78,14 @@
                             </div>
                             <div class="email default-height">
                                 <label for="emailid">Email <span>*</span></label>
-                                <input type="email" id="emailid" name="emailid">
+                                <div class="emailIcon">
+                                <i class="Icon fa fa-envelope"></i>
+
+                                <input type="email" id="emailid" name="emailid" required>
+                               
+
+                            </div>
+                            <div id="emailError" class="error"></div> <!-- Error message for Email  -->
 
                             </div>
 
@@ -83,22 +93,28 @@
                         <div class="second-row-p1">
                             <div class="aadhar default-height">
                                 <label for="aadharid">Aadhar No. <span>*</span></label>
-                                <input type="text" id="aadharid" name="aadharid">
-
+                                <input type="text" id="aadharid" name="aadharid" required>
+                                <div id="aadharError" class="error"></div> <!-- Error message for aadhar -->
                             </div>
                             <div class="dobmobile ">
                                 <!-- mobile/dob  -->
                                 <div class="dob default-height">
                                     <label for="dobid">DOB <span>*</span></label>
                                     <input type="date" id="dobid" name="dobid">
+                                    <div id="dobError" class="error"></div> <!-- Error message for aadhar -->
+
                                 </div>
                                 <div class="mobile default-height">
                                     
                                     <label for="mobileid">Mobile <span>*</span></label>
-                                    
-                                    
-                                    <input type="text" id="mobileid" name="mobileid">
-                                   
+      
+                                    <div class="mobileIcon">
+                                        <i class=" Icon fa fa-phone  "
+                                        ></i>
+                                    <input type="text" id="mobileid" name="mobileid" >
+                                </div>
+
+                                <div id="mobileError" class="error"></div> <!-- Error message for aadhar -->
                                 </div>
                             </div>
 
@@ -114,8 +130,11 @@
                                 <input type="radio" name="gender" id="male" >Male
                                 <input type="radio" name="gender">Female
                                 <input type="radio" name="gender">Other
-                                </div>
+
                                 
+
+                                </div>
+                               <div id="genderError" class="error"></div> <!-- Error message for aadhar -->
                             </div>
 
                         </div>
@@ -134,10 +153,13 @@
                                     <input type="radio" name="upload-photo" id=""  />
                                     <label for="no">No</label>
                                   </div>
+                                  
+
                                 </div>
                     
                                 <div class="upload-photo-input-container">
                                   <input type="file" name="userphoto" id="user-photo" required />
+                                  <div id="uploadPhotoError" class="error"></div> <!-- Error message for aadhar -->
                                 </div>
                     
 
