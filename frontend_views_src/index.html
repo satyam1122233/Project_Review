@@ -207,6 +207,7 @@
                                     <option value="swe">Sweden</option>
                                 </select>
 
+
                             </div>
                             <div class="state default-height">
                                 <label for="st">State<span>*</span></label>
@@ -239,6 +240,9 @@
                             <div class="street default-height gar">
                                 <label for="street">Street</label><span>*</span><br>
                                 <textarea id="street" name="street" cols="100%" rows="8%"></textarea>
+
+                                <div id="streetError" class="error"></div> <!-- Error message for aadhar -->
+
                             </div>
                             <div class=" gar default-height">
                                 <!-- mobile/dob  -->
@@ -247,10 +251,14 @@
                                 <div class="landmark default-height">
                                     <label for="land">Landmark<span>*</span></label>
                                     <input type="text" id="land" name="land">
+                                    <div id="landmarkError" class="error"></div> <!-- Error message -->
                                 </div>
                                 <div class="pincode default-height">
                                     <label for="pin">Pincode<span>*</span></label>
                                 <input type="tel" id="pin" name="pin" pattern="[0-9]{3}[0-9]{3}" placeholder="123456">
+                                
+                                <div id="pincodeError" class="error"></div> <!-- Error message for aadhar -->
+
 
                                 </div>
                                 
@@ -302,12 +310,14 @@
                     <div class="first-row-p3">
                         <div class="username default-height">
                             <label for="">Username <span>*</span></label>
-                            <input type="text" name="username" id="">
+                            <input type="text" name="username" id="username">
+                            <div id="usernameError" class="error"></div> <!-- Error message for username -->
 
                         </div>
                         <div class="password default-height">
                             <label for="">Password <span>*</span></label>
-                            <input type="password" name="password" id="">
+                            <input type="password" name="password" id="password">
+                            <div id="passwordError" class="error"></div> <!-- Error message for pswd -->
 
                         </div>
                         <div class="email">
@@ -327,6 +337,8 @@
                             <input class="input_hobbies radio_color" type="checkbox" name="hobbies" value="photo">Photography
                             <input class="input_hobbies radio_color" type="checkbox" name="hobbies" value="gard">Gardening
                         </div>
+                        <div id="hobbiesError" class="error"></div> <!-- Error message for hobbies -->
+
 
                     </div>
                     

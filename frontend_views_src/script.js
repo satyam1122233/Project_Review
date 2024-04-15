@@ -139,6 +139,7 @@ function disHide3() {
 
 function validatePersonalDetails() {
   //  Add validation for personal details fields (e.g., first name, email, etc.)
+  
     return validateFirstName() && validateLastName()&& validateEmail() && validateAadhar() && validateDOB() && validateMobile() && validateGender();
 
 }
@@ -394,69 +395,49 @@ function isChooseFileInputEmpty() {
 // Validate Address Details fields
 function validateAddressDetails() {
     var isValid = true;
+    
 
-    // Validate Country
-    var countrySelect = document.getElementById('count');
-    if (!validateSelect(countrySelect, "Country")) {
-        isValid = false;
-    }
-
-    // Validate State
-    var stateSelect = document.getElementById('st');
-    if (!validateSelect(stateSelect, "State")) {
-        isValid = false;
-    }
-
-    // Validate City
-    var citySelect = document.getElementById('city');
-    if (!validateSelect(citySelect, "City")) {
-        isValid = false;
-    }
+    
 
     // Validate Street
     var streetInput = document.getElementById('street');
-    if (!validateField(streetInput, "Street")) {
+    if (!validateField(streetInput,/^[a-zA-Z0-9\s,'-]*$/)) {
+        document.getElementById("streetError").innerHTML = "Street is required";
         isValid = false;
     }
 
     // Validate Landmark
     var landmarkInput = document.getElementById('land');
-    if (!validateField(landmarkInput, "Landmark")) {
+    if (!validateField(landmarkInput,/^[a-zA-Z0-9\s,'-]*$/)) {
+        document.getElementById("landmarkError").innerHTML = "Landmark is required";
+
         isValid = false;
     }
 
     // Validate Pincode
     var pincodeInput = document.getElementById('pin');
-    if (!validateField(pincodeInput, "Pincode", /^[0-9]{6}$/, "Pincode should be a 6-digit number")) {
+    if (!validateField(pincodeInput, /^[0-9]{6}$/)) {
+        document.getElementById("pincodeError").innerHTML = "Pincode is required";
+
         isValid = false;
     }
 
     return isValid;
 }
 
-// Function to validate select dropdown
-function validateSelect(select, fieldName) {
-    if (select.value === "") {
-        alert("Please select a value for " + fieldName);
-        highlightInvalidField(select);
-        return false;
-    }
-    return true;
-}
+
 
 // Function to validate field
-function validateField(input, fieldName, regex, errorMessage) {
+function validateField(input, regex) {
     var value = input.value.trim();
 
     if (value === '') {
-        alert(fieldName + " is required");
         highlightInvalidField(input);
         return false;
     }
 
     // Perform regex validation if provided
     if (regex && !regex.test(value)) {
-        alert(errorMessage);
         highlightInvalidField(input);
         return false;
     }
@@ -481,7 +462,7 @@ function validateUsername() {
     var usernameInput = document.querySelector('.username input[type="text"]');
     var username = usernameInput.value.trim();
     if (username === "") {
-        alert("Username is required.");
+        document.getElementById("usernameError").innerHTML = ("Username is required.");
         highlightInvalidField(usernameInput);
         return false;
     }
@@ -492,7 +473,7 @@ function validatePassword() {
     var passwordInput = document.querySelector('.password input[type="password"]');
     var password = passwordInput.value.trim();
     if (password === "") {
-        alert("Password is required.");
+        document.getElementById("passwordError").innerHTML =("Password is required.");
         highlightInvalidField(passwordInput);
         return false;
     }
@@ -502,7 +483,7 @@ function validatePassword() {
 function validateHobbies() {
     var hobbiesChecked = document.querySelectorAll('.hobbies_flex input[type="checkbox"]:checked');
     if (hobbiesChecked.length < 2) {
-        alert("Select at least 2 hobbies.");
+        document.getElementById("hobbiesError").innerHTML =("Select at least 2 hobbies.");
         return false;
     }
     return true;
@@ -536,7 +517,7 @@ function highlightInvalidField(input) {
 
 
 // Add event listeners to input fields in Personal Details and Address Details to remove red border and error message when filled
-document.querySelectorAll('#firstnameid , #aadharid, #mobileid, #count, #st, #city, #street, #land, #pin').forEach(function(input) {
+document.querySelectorAll('#firstnameid , #aadharid, #mobileid, #count, #st, #city, #street, #land, #pin,#username, #password').forEach(function(input) {
     input.addEventListener('input', function() {
         // When the user types or interacts with the input field, remove the red error message and border
         var errorDiv = input.nextElementSibling; // Assuming the error message div follows the input field
@@ -602,3 +583,22 @@ document.getElementById('user-photo').addEventListener('input', function() {
 
 
 
+document.querySelector('.hobbies_flex').addEventListener('change', function() {
+    var checkboxes = document.querySelectorAll('.input_hobbies');
+    var checkedCount = 0;
+    checkboxes.forEach(function(checkbox) {
+        if (checkbox.checked) {
+            checkedCount++;
+        }
+    });
+
+    
+    var errorDiv = document.getElementById("hobbiesError");
+    if (errorDiv) {
+        if (checkedCount < 2) {
+            errorDiv.innerHTML = "Please select at least 2 hobbies";
+        } else {
+            errorDiv.innerHTML = "";
+        }
+    }
+});

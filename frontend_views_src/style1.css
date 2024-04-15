@@ -445,14 +445,15 @@ span{
 
 
 
-
-
-
-
-
+/*for errors*/
 
 
 .error {
     color: red;
     font-size: 0.8em;
 }
+
+
+
+
+
