@@ -28,12 +28,18 @@ error_reporting(E_ALL);
    
     // $sql = " INSERT INTO `reg_details` (`id`, `first_name`, `last_name`, `date_of_birth`, `gender`, `email_id`, `mobile`, `aadhar_no`, `upload_photo`, `country`, `state`, `city`, `street`, `landmark`, `pincode`, `username`, `password`, `hobbies`) VALUES (NULL, 'satyam', 'kumar', '2024-04-02', 'm', 's@12.gmail.com', 'd', 'dsds', '', 'dsds', 'ddd', 'dsdsd', 'dssd', 'dss', '32', 'ffff', 'cxc', 'dskjhd')";
 
+
     $sql = "INSERT INTO `registration_details` (`id`, `first_name`, `last_name`,`date_of_birth`, `gender`, `email_id`, `mobile`, `aadhar_no`, `country`, `state`, `city`, `street`, `landmark`, `pincode`, `username`, `password`,`hobbies`) VALUES (NULL, '$first_name', '$last_name','$dob', '$gender', '$email', '$phone', '$aadhar', '$country', '$state', '$city', '$street', '$landmark', '$pincode', '$user_name', '$password','$hobbies')";
 
-   
+    if ($conn->query($sql) === TRUE) {
+        echo "Success updating record";
+        die;
+        
+      } else {
+        echo "Error updating record: " . $conn->error;
+      }
 
-    // echo '<script>alert("text")</script>';
-        //  echo 'done';
+
 
 
 ?>
