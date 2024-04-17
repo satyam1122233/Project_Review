@@ -36,9 +36,6 @@ function disHide1() {
     document.getElementById("ad").style.color = "white";
 
 
-
-
-
     document.getElementById("pdIcon").classList.remove('fa-circle-o');
     document.getElementById("pdIcon").classList.add('fa-check-circle');
     document.getElementById("adIcon").classList.remove('fa-circle-o');
@@ -152,15 +149,13 @@ function validatePersonalDetails() {
 // Function to validate first name
 function validateFirstName() {
     var firstNameInput = document.getElementById('firstnameid');
-    var firstNameValue = firstNameInput.value.trim(); // Trim any leading or trailing spaces
+    var firstNameValue = firstNameInput.value.trim(); 
 
-    // Regular expression to check if the input contains only characters
     var lettersRegex = /^[A-Za-z]+$/;
 
     // Check if the input is empty or contains non-character values
     if (firstNameValue === '') {
         document.getElementById("nameError").innerHTML = "First Name is required";
-        event.preventDefault();
         highlightInvalidField(firstNameInput);
         return false;
     } else if (!lettersRegex.test(firstNameValue)) {
@@ -191,7 +186,7 @@ function validateLastName() {
         return true;
     } else if (!lettersRegex.test(lastNameValue)) {
         // If the input contains non-letter values, display an alert and highlight the field
-        alert('Last Name should contain only letters');
+        document.getElementById("lastNameError").innerHTML = "Last Name should contain only letters";
         highlightInvalidField(lastNameInput);
         return false;
     }
@@ -208,10 +203,8 @@ function validateEmail() {
     // Regular expression to check if the input is a valid email address
     var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-    // Check if the input is empty or does not match the email format
     if (emailValue === '') {
         document.getElementById("emailError").innerHTML = "Email is required";
-        event.preventDefault();
         highlightInvalidField(emailInput);
         return false;
     } else if (!emailRegex.test(emailValue)) {
@@ -297,10 +290,12 @@ function validateGender() {
 
     // Check if any gender option is selected
     for (var i = 0; i < genderInputs.length; i++) {
+
         if (genderInputs[i].checked) {
             genderSelected = true;
             break;
         }
+        
     }
 
     // If no gender is selected, show an alert
@@ -314,7 +309,7 @@ function validateGender() {
     }
 
 }
-uploadPhotoError
+
 
 function isRadioButtonChecked() {
     // Iterate through each radio button
@@ -335,8 +330,9 @@ function isRadioButtonChecked() {
 
 
 // Add event listener to the radio buttons
-document.querySelectorAll('input[type="radio"][name="upload-photo"]').forEach(function(radioButton) {
-    radioButton.addEventListener('change', function() {
+const radioButton=document.querySelectorAll('[name=upload-photo]');
+for(let i = 0;i<radioButton.length;i++) {
+    radioButton[i].addEventListener('change', function() {
         // Check if the "Yes" radio button is checked
         if (document.querySelector('.yes-checkbox-container input[type="radio"]').checked) {
             // Perform some action when "Yes" is checked
@@ -351,7 +347,7 @@ document.querySelectorAll('input[type="radio"][name="upload-photo"]').forEach(fu
             document.getElementById('user-photo').style.display= "none";
         }
     });
-});
+}
 
 
 // Function to replace the selected file
@@ -391,62 +387,74 @@ function isChooseFileInputEmpty() {
 //address//
 
 
-
-// Validate Address Details fields
 function validateAddressDetails() {
-    var isValid = true;
-    
-
+    return validStreet() && validLandmark() && validPincode();
+}
     
 
     // Validate Street
-    var streetInput = document.getElementById('street');
-    if (!validateField(streetInput,/^[a-zA-Z0-9\s,'-]*$/)) {
-        document.getElementById("streetError").innerHTML = "Street is required";
-        isValid = false;
+    function validStreet(){
+        var streetInput = document.getElementById('street');
+        var streetValue= streetInput.value.trim();
+        var streetregex= /^[a-zA-Z0-9\s,'-.]+$/;;
+        if (streetValue==='') {
+            document.getElementById("streetError").innerHTML = "Street is required";
+            highlightInvalidField(streetInput);
+            return false;
+
+        }else if(!streetregex.test(streetValue)){
+            document.getElementById("streetError").innerHTML = "Please enter a valid street address";
+            highlightInvalidField(streetInput);
+            return false;
+        }else{
+            return true;
+        }
+        
     }
+    
 
     // Validate Landmark
-    var landmarkInput = document.getElementById('land');
-    if (!validateField(landmarkInput,/^[a-zA-Z0-9\s,'-]*$/)) {
-        document.getElementById("landmarkError").innerHTML = "Landmark is required";
+    function validLandmark(){
+        var landmarkInput = document.getElementById('land');
+        var landmarkValue= landmarkInput.value.trim();
+         var landmarkRegex= /^[a-zA-Z0-9\s,'-]*$/;
 
-        isValid = false;
+         if (landmarkValue==='') {
+            document.getElementById("landmarkError").innerHTML = "Landmark is required";
+    
+            highlightInvalidField(landmarkInput)
+            return false;
+        }else if(!landmarkRegex.test(landmarkValue)){
+            document.getElementById("landmarkError").innerHTML = "Please enter a valid Landmark";
+    
+            highlightInvalidField(landmarkInput)
+            return false;
+        }else{
+            return true
+        }
+         
     }
+    
 
     // Validate Pincode
-    var pincodeInput = document.getElementById('pin');
-    if (!validateField(pincodeInput, /^[0-9]{6}$/)) {
-        document.getElementById("pincodeError").innerHTML = "Pincode is required";
+    function validPincode(){
+        var pincodeInput = document.getElementById('pin');
+        var pincodeValue= pincodeInput.value.trim();
+        var pincodeRegex= /^[0-9]{6}$/;
 
-        isValid = false;
+        if (pincodeValue==='') {
+            document.getElementById("pincodeError").innerHTML = "Pincode is required";
+            highlightInvalidField(pincodeInput);
+            return false;
+        }else if(!pincodeRegex.test(pincodeValue)){
+            document.getElementById("pincodeError").innerHTML = "Please enter a valid Pincode";
+            highlightInvalidField(pincodeInput);
+            return false;
+        }else{
+            return true;
+        }
+    
     }
-
-    return isValid;
-}
-
-
-
-// Function to validate field
-function validateField(input, regex) {
-    var value = input.value.trim();
-
-    if (value === '') {
-        highlightInvalidField(input);
-        return false;
-    }
-
-    // Perform regex validation if provided
-    if (regex && !regex.test(value)) {
-        highlightInvalidField(input);
-        return false;
-    }
-
-    return true;
-}
-
-
-
 
 
 
@@ -460,9 +468,14 @@ function validateOtherDetails() {
 
 function validateUsername() {
     var usernameInput = document.querySelector('.username input[type="text"]');
-    var username = usernameInput.value.trim();
-    if (username === "") {
+    var usernameValue = usernameInput.value.trim();
+    var usernameRegex= /^[0-9A-Za-z]{6,16}$/    ;
+    if (usernameValue === '') {
         document.getElementById("usernameError").innerHTML = ("Username is required.");
+        highlightInvalidField(usernameInput);
+        return false;
+    }else if(usernameRegex.test(usernameValue)){
+        document.getElementById("usernameError").innerHTML = ("Please enter a valid Username");
         highlightInvalidField(usernameInput);
         return false;
     }
@@ -517,7 +530,7 @@ function highlightInvalidField(input) {
 
 
 // Add event listeners to input fields in Personal Details and Address Details to remove red border and error message when filled
-document.querySelectorAll('#firstnameid , #aadharid, #mobileid, #count, #st, #city, #street, #land, #pin,#username, #password').forEach(function(input) {
+document.querySelectorAll('#firstnameid, #lastnameid , #aadharid, #mobileid, #count, #st, #city, #street, #land, #pin,#username, #password').forEach(function(input) {
     input.addEventListener('input', function() {
         // When the user types or interacts with the input field, remove the red error message and border
         var errorDiv = input.nextElementSibling; // Assuming the error message div follows the input field
@@ -602,3 +615,24 @@ document.querySelector('.hobbies_flex').addEventListener('change', function() {
         }
     }
 });
+
+
+
+// Add event listeners to input fields for real-time validation
+
+//personal details
+document.getElementById('firstnameid').addEventListener('input', validateFirstName);
+document.getElementById('lastnameid').addEventListener('input', validateLastName);
+document.getElementById('emailid').addEventListener('input', validateEmail);
+document.getElementById('aadharid').addEventListener('input', validateAadhar);
+document.getElementById('dobid').addEventListener('input', validateDOB);
+document.getElementById('mobileid').addEventListener('input', validateMobile);
+
+
+//address details
+document.getElementById('street').addEventListener('input', validStreet);
+document.getElementById('land').addEventListener('input', validLandmark);document.getElementById('pin').addEventListener('input', validPincode);
+
+//other details
+document.getElementById('username').addEventListener('input', validateUsername);
+document.getElementById('password').addEventListener('input', validatePassword);
