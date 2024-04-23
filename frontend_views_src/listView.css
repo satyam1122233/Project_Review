@@ -2,13 +2,13 @@ body {
     font-family: 'lato', sans-serif;
   }
   .container {
-    max-width: 1000px;
-    margin-left: auto;
-    margin-right: auto;
-    padding-left: 10px;
-    padding-right: 10px;
+    width: 93%;
+    margin: auto;
   }
-  
+  .id{
+    display: none !important;
+  }
+ 
   h2 {
     font-size: 26px;
     margin: 20px 0;
@@ -21,10 +21,10 @@ body {
   .responsive-table {
     li {
       border-radius: 3px;
-      padding: 25px 30px;
       display: flex;
       justify-content: space-between;
       margin-bottom: 25px;
+      
     }
     .table-header {
       background-color: green;
@@ -38,6 +38,7 @@ body {
       background-color: #ffffff;
       box-shadow: 0px 0px 9px 0px rgba(0,0,0,0.1);
     }
+    
     .col-1 {
       flex-basis: 25%;
     }
@@ -242,7 +243,94 @@ div#cover {
   align-items: center;
 }
 .col {
-  width: 50%;
+  width: 70%;
+  border: 1px solid grey;
+  padding: 1%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+  flex-direction: row;
 }
 
   
+
+
+
+/* Style the dropdown button */
+.dropbtn {
+  background-color: #008000;
+  color: #ffffff;
+  /* padding: 8px; */
+  font-size: 25px;
+  border: none;
+  cursor: pointer;
+  width: 17px;
+  border-radius: 50px;
+  justify-content: center;
+  display: flex;
+}
+
+/* Position the dropdown content */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 120px;
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+/* Style the links inside the dropdown */
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  cursor: pointer;
+
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content :hover {background-color: gray;}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+/* Change the background color of the dropdown button when the dropdown content is shown */
+.dropdown:hover .dropbtn {background-color: #2980b9;}
+
+
+
+.registration_heading{
+  display: flex; 
+  justify-content: space-between;
+   align-items: center;
+   margin: 0% 6%; /* Adjust margin as needed */
+
+}
+.plusBtnBackground {
+  width: 40px;
+  height: 40px;
+  border-radius: 25%;
+  background-color: #008000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.plusBtnCircle{
+  border-radius: 50%;
+  width: 60%;
+  height: 60%;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  padding: 2px;
+  align-items: center;
+  color: #008000;
+
+}
