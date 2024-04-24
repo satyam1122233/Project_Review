@@ -1,22 +1,20 @@
 <?php 
 
-// $servername = "localhost";
-// $username = "root";
-// $password = "";
-// $dbname = "students";
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "students";
 
-$servername = "srv-dev.dayalinfosystems.com";
-$username = "satyamk_miet";
-$password = "Sk#9719&";
-$dbname = "db_satyamk_miet";
+// $servername = "srv-dev.dayalinfosystems.com";
+// $username = "satyamk_miet";
+// $password = "Sk#9719&";
+// $dbname = "db_satyamk_miet";
 
 $conn = new mysqli($servername, $username, $password, $dbname);
 if ($conn->connect_error) {
   die("Connection failed: " . $conn->connect_error);
-}else{
-  echo "successfull";
 }
 
-$table1="template_det"; 
+$table1="registration_details"; 
 $users = "users"
 ?>
