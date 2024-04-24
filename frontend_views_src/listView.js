@@ -123,9 +123,9 @@ $(document).ready(function(){
                 console.log(dat);
                 var s_no=1;
 
-                $("#registration_details").children().not("#col_name").remove();
+                $("#tbl_student_registration").children().not("#col_name").remove();
                 for(var i = 0; i<dat.length; i++){
-                    $("#registration_details").append(`<li class="table-row">
+                    $("#tbl_student_registration").append(`<li class="table-row">
                         <div class="id col col-1" data-label="S_No">`+dat[i].id+`</div>
                         <div class="s_no col col-1" data-label="S_No"></div>
 
