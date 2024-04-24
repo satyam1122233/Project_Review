@@ -334,3 +334,18 @@ div#cover {
   color: #008000;
 
 }
+
+.col[data-label="Student Details"] {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.col[data-label="Student Details"] img {
+ width: 100%;
+ border-radius: 50px;
+}
+.col-3 div {
+     display: contents;
+
+}
