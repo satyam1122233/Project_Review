@@ -28,7 +28,7 @@
 
   //  $sql = "UPDATE `registration_details` SET `first_name` = '$first_name', `last_name` = '$last_name', `date_of_birth` = '$dob', `gender` = '$gender', `email_id` = '$email', `mobile` = '$phone', `aadhar_no` = '$aadhar', `country` = '$country', `state` = '$state', `city` = '$city', `street` = '$street', `landmark` = '$landmark', `pincode` = '$pincode', `username` = '$user_name', `password` = '$password', `hobbies` = '$hobbies' WHERE `registration_details`.`id` = $id";
 
-  $sql = "UPDATE `registration_details` SET `first_name` = '$first_name', `last_name` = '$last_name', `date_of_birth` = '$dob',`email_id` = '$email', `mobile` = '$phone', `aadhar_no` = '$aadhar',`country` = '$country', `state` = '$state', `city` = '$city', `street` = '$street',`landmark` = '$landmark', `pincode` = '$pincode' WHERE `registration_details`.`id` = $id";
+  $sql = "UPDATE `tbl_student_registration` SET `first_name` = '$first_name', `last_name` = '$last_name', `date_of_birth` = '$dob',`email_id` = '$email', `mobile` = '$phone', `aadhar_no` = '$aadhar',`country` = '$country', `state` = '$state', `city` = '$city', `street` = '$street',`landmark` = '$landmark', `pincode` = '$pincode' WHERE `registration_details`.`id` = $id";
 
 
    

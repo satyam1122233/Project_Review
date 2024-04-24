@@ -9,7 +9,7 @@ error_reporting(E_ALL);
 
 
 
-    $sql = "SELECT * FROM `registration_details`";
+    $sql = "SELECT * FROM `tbl_student_registration`";
     $retval =$conn->query($sql);
     if(! $retval ) {
         die('Could not insert data: ' .$conn->connect_error);
