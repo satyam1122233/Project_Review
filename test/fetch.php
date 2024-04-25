@@ -23,6 +23,7 @@ error_reporting(E_ALL);
     if($retval->num_rows >0){
 	while($row =$retval->fetch_assoc()) {
 
+
         $js[] = array(
             'id' => $row['id'],
             'first_name' => $row['first_name'],
@@ -38,7 +39,11 @@ error_reporting(E_ALL);
             'date_of_birth' => $row['date_of_birth'],
             'gender' => $row['gender'],
             'street' => $row['street'],
-            'hobbies' => $row['hobbies']
+            'hobbies' => $row['hobbies'],
+            'image_blb' => base64_encode($row['image_blb']) // Encode image data to base64
+
+
+
         );
     }
     }
