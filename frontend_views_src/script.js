@@ -1,3 +1,191 @@
+// ===============================================dropdowns============
+// ===============================================dropdowns============
+// ===============================================dropdowns============
+validateUsername();
+$("#username").change(validateUsername());
+
+var countrySateCityinfo = {
+    India:{
+        "Andhra Pradesh": [ 'Visakhapatnam', 'Vijayawada', 'Guntur', 'Nellore', 'Kurnool', 'Rajahmundry', 'Tirupati', 'Kadapa', 'Kakinada', 'Anantapur' ],
+        
+        Assam: [ 'Guwahati', 'Silchar', 'Dibrugarh', 'Jorhat', 'Nagaon', 'Tinsukia', 'Tezpur', 'Karimganj', 'Sibsagar', 'Goalpara' ],
+        
+        Bihar: [ 'Patna', 'Gaya', 'Bhagalpur', 'Muzaffarpur', 'Purnia', 'Darbhanga', 'Arrah', 'Begusarai', 'Katihar', 'Chhapra' ],
+        
+        Chhattisgarh: [ 'Raipur', 'Bhilai', 'Korba', 'Bilaspur', 'Raigarh', 'Rajnandgaon', 'Durg', 'Jagdalpur', 'Ambikapur', 'Dhamtari' ],
+        
+        Goa: [ 'Panaji', 'Vasco da Gama', 'Margao', 'Mapusa', 'Ponda', 'Bicholim', 'Curchorem', 'Sanguem', 'Canacona', 'Quepem' ],
+        
+        Gujarat: [ 'Ahmedabad', 'Surat', 'Vadodara', 'Rajkot', 'Bhavnagar', 'Jamnagar', 'Junagadh', 'Gandhinagar', 'Nadiad', 'Anand' ],
+        
+        Haryana: [ 'Faridabad', 'Gurgaon', 'Panipat', 'Ambala', 'Yamunanagar', 'Rohtak', 'Hisar', 'Karnal', 'Sonipat', 'Panchkula' ],
+        
+        "Himachal Pradesh": [ 'Shimla', 'Mandi', 'Solan', 'Dharamshala', 'Kullu', 'Chamba', 'Hamirpur', 'Nahan', 'Bilaspur', 'Palampur' ],
+        
+        Jharkhand: [ 'Ranchi', 'Jamshedpur', 'Dhanbad', 'Bokaro Steel City', 'Hazaribagh', 'Deoghar', 'Giridih', 'Ramgarh', 'Dumka', 'Chaibasa' ],
+        
+        Karnataka: [ 'Bangalore', 'Hubli', 'Mysore', 'Gulbarga', 'Belgaum', 'Mangalore', 'Davanagere', 'Bellary', 'Shimoga', 'Tumkur' ],
+        
+        Kerala: [ 'Thiruvananthapuram', 'Kochi', 'Kozhikode', 'Kollam', 'Thrissur', 'Kannur', 'Alappuzha', 'Kottayam', 'Palakkad', 'Manjeri' ],
+        
+       "Madhya Pradesh": [ 'Indore', 'Bhopal', 'Jabalpur', 'Gwalior', 'Ujjain', 'Sagar', 'Dewas', 'Satna', 'Ratlam', 'Rewa' ],
+        
+        Maharashtra: [ 'Mumbai', 'Pune', 'Nagpur', 'Nashik', 'Aurangabad', 'Thane', 'Solapur', 'Kolhapur', 'Navi Mumbai', 'Amravati' ],
+        
+        Manipur: [ 'Imphal', 'Thoubal', 'Kakching', 'Ukhrul', 'Churachandpur', 'Senapati', 'Bishnupur', 'Chandel', 'Tamenglong', 'Jiribam' ],
+        
+        Meghalaya: [ 'Shillong', 'Tura', 'Nongstoin', 'Jowai', 'Williamnagar', 'Baghmara', 'Resubelpara', 'Mairang', 'Mawkyrwat', 'Khliehriat' ],
+        
+        Mizoram: [ 'Aizawl', 'Lunglei', 'Saiha', 'Champhai', 'Kolasib', 'Serchhip', 'Lawngtlai', 'Mamit', 'Hnahthial', 'Saitual' ],
+        
+        Nagaland: [ 'Kohima', 'Dimapur', 'Mokokchung', 'Tuensang', 'Wokha', 'Zunheboto', 'Phek', 'Mon', 'Longleng', 'Kiphire' ],
+        
+        Odisha: [ 'Bhubaneswar', 'Cuttack', 'Rourkela', 'Brahmapur', 'Sambalpur', 'Puri', 'Balasore', 'Bhadrak', 'Baripada', 'Jeypore' ],
+        
+        Punjab: [ 'Amritsar', 'Ludhiana', 'Jalandhar', 'Patiala', 'Bathinda', 'Hoshiarpur', 'Pathankot', 'Moga', 'Firozpur', 'Batala' ],
+        
+        Rajasthan: [ 'Jaipur', 'Jodhpur', 'Kota', 'Bikaner', 'Ajmer', 'Udaipur', 'Bhilwara', 'Alwar', 'Bharatpur', 'Sikar' ],
+        
+        Sikkim: [ 'Gangtok', 'Namchi', 'Mangan', 'Singtam', 'Rangpo', 'Naya Bazar', 'Jorethang', 'Ravangla', 'Soreng', 'Melli' ],
+        
+        "Tamil Nadu": [ 'Chennai', 'Coimbatore', 'Madurai', 'Tiruchirappalli', 'Salem', 'Tirunelveli', 'Tiruppur', 'Ranipet', 'Nagercoil', 'Thanjavur' ],
+        
+        Telangana: [ 'Hyderabad', 'Warangal', 'Nizamabad', 'Karimnagar', 'Ramagundam', 'Khammam', 'Mahbubnagar', 'Nalgonda', 'Adilabad', 'Suryapet' ],
+        
+        Tripura: [ 'Agartala', 'Udaipur', 'Dharmanagar', 'Kailashahar', 'Belonia', 'Sabroom', 'Bishalgarh', 'Khowai', 'Sonamura', 'Teliamura' ],
+        
+        "Uttar Pradesh": ['Agra', 'Lucknow', 'Kanpur', 'Varanasi', 'Allahabad', 'Ghaziabad', 'Meerut', 'Noida', 'Gorakhpur', 'Aligarh', 'Bareilly', 'Moradabad', 'Saharanpur', 'Gorakhpur', 'Faizabad', 'Firozabad', 'Jhansi', 'Muzaffarnagar', 'Mathura', 'Budaun', 'Etawah', 'Rampur', 'Shahjahanpur', 'Mau', 'Farrukhabad', 'Hapur', 'Sultanpur', 'Mirzapur', 'Basti', 'Deoria', 'Ballia', 'Orai', 'Etah', 'Bijnor', 'Amroha', 'Hardoi', 'Azamgarh', 'Raebareli', 'Sitapur', 'Unnao', 'Jaunpur'],
+
+        Uttarakhand: ['Dehradun','Haridwar','Roorkee','Haldwani','Rudrapur','Kashipur','Rishikesh','Pauri','Kotdwara','Mussoorie'],
+
+        "West Bengal": ['Kolkata','Asansol','Siliguri','Durgapur','Bardhaman','Malda','Baharampur','Kharagpur','Habra','Krishnanagar']
+      }
+      ,
+      "United States": {
+        "Alabama": ["Birmingham", "Montgomery", "Mobile", "Huntsville", "Tuscaloosa", "Hoover", "Dothan", "Auburn", "Decatur", "Madison"],
+        "Alaska": ["Anchorage", "Fairbanks", "Juneau", "Sitka", "Ketchikan", "Wasilla", "Kenai", "Kodiak", "Bethel", "Palmer"],
+        "Arizona": ["Phoenix", "Tucson", "Mesa", "Chandler", "Glendale", "Scottsdale", "Gilbert", "Tempe", "Peoria", "Surprise"],
+        "Arkansas": ["Little Rock", "Fort Smith", "Fayetteville", "Springdale", "Jonesboro", "North Little Rock", "Conway", "Rogers", "Bentonville", "Hot Springs"],
+        "California": ["Los Angeles", "San Diego", "San Jose", "San Francisco", "Fresno", "Sacramento", "Long Beach", "Oakland", "Bakersfield", "Anaheim"],
+        "Colorado": ["Denver", "Colorado Springs", "Aurora", "Fort Collins", "Lakewood", "Thornton", "Arvada", "Westminster", "Pueblo", "Centennial"],
+        "Connecticut": ["Bridgeport", "New Haven", "Hartford", "Stamford"]
+    },
+    "United Kingdom": {
+        "England": ["London", "Manchester", "Birmingham", "Liverpool", "Bristol", "Leeds", "Sheffield", "Newcastle upon Tyne", "Nottingham", "Leicester"],
+        "Scotland": ["Glasgow", "Edinburgh", "Aberdeen", "Dundee", "Inverness", "Stirling", "Perth", "Dumfries", "Kirkcaldy", "Ayr"],
+        "Wales": ["Cardiff", "Swansea", "Newport", "Wrexham", "Barry", "Neath", "Cwmbran", "Bridgend", "Llanelli", "Merthyr Tydfil"],
+        "Northern Ireland": ["Belfast", "Londonderry", "Newry", "Armagh", "Bangor", "Lisburn", "Craigavon", "Ballymena", "Newtownabbey", "Coleraine"],
+        "Isle of Man": ["Douglas", "Peel", "Ramsey", "Castletown", "Port Erin", "Port St Mary", "Laxey", "Onchan", "Baldrine", "Ballaugh"],
+        "Jersey": ["Saint Helier", "Saint Saviour", "Saint Clement", "Saint Lawrence", "Saint Peter", "Saint Ouen", "Saint John", "Saint Martin", "Grouville", "Trinity"],
+        "Guernsey": ["Saint Peter Port", "Vale", "Castel", "St Sampson", "St Martin", "St Andrew", "St Pierre du Bois", "St Saviour", "Forest", "Torteval"]
+    },
+    "Canada": {
+        "Ontario": ["Toronto", "Ottawa", "Mississauga", "Hamilton", "London", "Markham", "Brampton", "Vaughan", "Kitchener", "Windsor"],
+        "Quebec": ["Montreal", "Quebec City", "Laval", "Gatineau", "Longueuil", "Sherbrooke", "Saguenay", "Levis", "Trois-Rivieres", "Terrebonne"],
+        "British Columbia": ["Vancouver", "Surrey", "Burnaby", "Richmond", "Abbotsford", "Coquitlam", "Kelowna", "Saanich", "Langley", "Delta"],
+        "Alberta": ["Calgary", "Edmonton", "Red Deer", "Lethbridge", "St. Albert", "Medicine Hat", "Grande Prairie", "Airdrie", "Spruce Grove", "Leduc"],
+        "Manitoba": ["Winnipeg", "Brandon", "Steinbach", "Thompson", "Portage la Prairie", "Selkirk", "Dauphin", "Winkler", "Morden", "Flin Flon"],
+        "Saskatchewan": ["Saskatoon", "Regina", "Prince Albert", "Moose Jaw", "North Battleford", "Swift Current", "Estevan", "Weyburn", "Yorkton", "Warman"],
+        "Nova Scotia": ["Halifax", "Sydney", "Dartmouth", "Truro", "New Glasgow", "Glace Bay", "Kentville", "Amherst", "Bridgewater", "Yarmouth"]
+    },
+    "Australia": {
+        "New South Wales": ["Sydney", "Newcastle", "Central Coast", "Wollongong", "Maitland", "Coffs Harbour", "Albury", "Port Macquarie", "Wagga Wagga", "Tamworth"],
+        "Victoria": ["Melbourne", "Geelong", "Ballarat", "Bendigo", "Mildura", "Warrnambool", "Shepparton", "Traralgon", "Wangaratta", "Sunbury"],
+        "Queensland": ["Brisbane", "Gold Coast", "Sunshine Coast", "Townsville", "Cairns", "Toowoomba", "Mackay", "Rockhampton", "Bundaberg", "Hervey Bay"],
+        "Western Australia": ["Perth", "Rockingham", "Mandurah", "Bunbury", "Geraldton", "Albany", "Kalgoorlie", "Karratha", "Broome", "Port Hedland"],
+        "South Australia": ["Adelaide", "Mount Gambier", "Whyalla", "Murray Bridge", "Port Augusta", "Port Pirie", "Victor Harbor", "Gawler", "Mount Barker", "Morphett Vale"]
+    }
+}
+
+// window.onload = function(){
+    const selectCountry = document.getElementById('country'),
+        selectState = document.getElementById('state'),
+        selectCity = document.getElementById('city'),
+        selects = document.querySelectorAll('select')
+
+        selectState.disabled = true
+        selectCity.disabled = true
+
+        selects.forEach(select => {
+            if(select.disabled == true){
+                select.style.cursor = "auto"
+            }
+            else{
+                select.style.cursor = "pointer"
+            }
+        })
+
+        for(let country in countrySateCityinfo){
+            console.log(country);
+            selectCountry.options[selectCountry.options.length] = new Option(country, country)
+        }
+
+
+        // country change
+        selectCountry.onchange = (e) =>{
+            
+            selectState.disabled = false
+            selectCity.disabled = true
+
+            selects.forEach(select => {
+                if(select.disabled == true){
+                    select.style.cursor = "auto"
+                }
+                else{
+                    select.style.cursor = "pointer"
+                }
+            })
+
+            selectState.length = 1
+            selectCity.length = 1
+
+            for(let state in countrySateCityinfo[e.target.value]){
+                // console.log(state);
+                selectState.options[selectState.options.length] = new Option(state, state)
+            }
+        }
+
+        // state change
+        selectState.onchange = (e) =>{
+            selectCity.disabled = false
+
+            selects.forEach(select => {
+                if(select.disabled == true){
+                    select.style.cursor = "auto"
+                }
+                else{
+                    select.style.cursor = "pointer"
+                }
+            })
+
+            selectCity.length = 1
+
+            let city = countrySateCityinfo[selectCountry.value][e.target.value]
+
+            for(let i=0; i<city.length; i++){
+                selectCity.options[selectCity.options.length] = new Option(city[i], city[i])
+            }
+
+        }
+
+        // change city
+        selectCity.onchange = (e) =>{
+
+            selects.forEach(select => {
+                if(select.disabled == true){
+                    select.style.cursor = "auto"
+                }
+                else{
+                    select.style.cursor = "pointer"
+                }
+            })
+            
+
+          
+        }
+// }
+
+
 
 // Function to initialize the page with green background for Personal Details
 window.onload = function() {
@@ -9,6 +197,12 @@ window.onload = function() {
 
 
 }
+
+
+
+// ===============================================dropdowns============
+// ===============================================dropdowns============
+// ===============================================dropdowns============
 
 // Function to hide personal details section and show address details section
 function disHide1() {
@@ -133,8 +327,8 @@ function disHide3() {
 
 function validatePersonalDetails() {
   //  Add validation for personal details fields (e.g., first name, email, etc.)
-  
-    return validateFirstName() && validateLastName()&& validateEmail() && validateAadhar() && validateDOB() && validateMobile() && validateGender();
+  return true;
+    // return validateFirstName() && validateLastName()&& validateEmail() && validateAadhar() && validateDOB() && validateMobile() && validateGender();
 
 }
 
@@ -474,27 +668,25 @@ function validateUsername() {
 
     if (usernameValue === '') {
         document.getElementById("usernameError").innerHTML = "Username is required.";
+        $("#submitid").off("click");
         highlightInvalidField(usernameInput);
         return false;
     } else if (!usernameRegex.test(usernameValue)) {
         document.getElementById("usernameError").innerHTML = "Please enter a valid username between 6 and 16 characters.";
+        $("#submitid").off("click");
+
         highlightInvalidField(usernameInput);
         return false;
+    }
+    if (usernameValue != '') {
+
+        $("#submitid").on("click");
+
     }
 
     return true;
 }
-;
-    if (usernameValue === '') {
-        document.getElementById("usernameError").innerHTML = ("Username is required.");
-        highlightInvalidField(usernameInput);
-        return false;
-    }else if(usernameRegex.test(usernameValue)){
-        document.getElementById("usernameError").innerHTML = ("Please enter a valid Username");
-        highlightInvalidField(usernameInput);
-        return false;
-    }
-    return true;
+
 }
 
 function validatePassword() {
@@ -506,6 +698,7 @@ function validatePassword() {
     if (password === "") {
         document.getElementById("passwordError").innerHTML = "Password is required.";
         highlightInvalidField(passwordInput);
+
         return false;
     } else if (password.length < 8) {
         document.getElementById("passwordError").innerHTML = "Password should be at least 8 characters long.";

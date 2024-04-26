@@ -55,7 +55,7 @@ if ($upload && isset($_FILES['userphoto']['tmp_name']) && $_FILES['userphoto']['
 } else {
     
   // If no  is uploaded, use the default image
-  $default_image_path = 'C:\wamp64\www\DIS_GIT_satyamk_miet\default_profile_img.jpeg'; 
+  $default_image_path = '../backend_src/default_image/default_profile_img.jpeg'; 
   $image_blb = addslashes(file_get_contents($default_image_path));
   $photo_name = 'default_image.jpg'; 
 
