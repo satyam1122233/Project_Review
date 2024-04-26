@@ -60,7 +60,7 @@ if ($upload && isset($_FILES['userphoto']['tmp_name']) && $_FILES['userphoto']['
   $photo_name = 'default_image.jpg'; 
 
 }
-  $query = "INSERT INTO $table1 (id, first_name, last_name, date_of_birth, gender, upload_photo, image_blb, photo_name, email_id, mobile, aadhar_no, country, state, city, street, landmark, pincode, username, password, hobbies, created_date) VALUES ('$new_id', '$first_name', '$last_name', '$date_of_birth', '$gender', '$upload', '$image_blb', '$photo_name', '$email_id', '$mobile', '$aadhar_no', '$country', '$state', '$city', '$street', '$landmark', '$pincode', '$username', '$password', '$hobbies_str', NOW())";
+  $query = "INSERT INTO `tbl_student_registration` (id, first_name, last_name, date_of_birth, gender, upload_photo, image_blb, photo_name, email_id, mobile, aadhar_no, country, state, city, street, landmark, pincode, username, password, hobbies, created_date) VALUES ('$new_id', '$first_name', '$last_name', '$date_of_birth', '$gender', '$upload', '$image_blb', '$photo_name', '$email_id', '$mobile', '$aadhar_no', '$country', '$state', '$city', '$street', '$landmark', '$pincode', '$username', '$password', '$hobbies_str', NOW())";
 
 
 // Execute the query
@@ -68,7 +68,7 @@ $information = mysqli_query($conn, $query);
 
 if ($information) {
   echo "<script>
-  window.location.href = 'fid_success.html';
+  window.location.href = '../frontend_views_src/fid_success.html';
   </script>";
 
 } else {

@@ -16,5 +16,4 @@ if ($conn->connect_error) {
 }
 
 $table1="tbl_student_registration"; 
-$users = "users"
 ?>

@@ -41,7 +41,7 @@ $(document).ready(function(){
         var id = $("#template_form").find("#temp_id").val();
 
         $.ajax({
-            url: "update.php",
+            url: "../backend_src/update.php",
             type: "POST",
             data: {
                 "id": id,
@@ -149,7 +149,7 @@ $(document).ready(function(){
         var id = $(this).closest(".table-row").find(".id").text();
 
         $.ajax({
-            url: "delete.php",
+            url: "../backend_src/delete.php",
             type: "POST",
             data: {
                 "id": id
@@ -165,7 +165,7 @@ $(document).ready(function(){
         
 
         $.ajax({
-            url: "fetch.php",
+            url: "../backend_src/fetch.php",
             type: "POST",
             success: function(response) { 
                 var dat = JSON.parse(response);
