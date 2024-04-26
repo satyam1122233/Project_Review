@@ -1,47 +1,3 @@
-// $("input[type='checkbox']").each(function(){
-//     if($(this).prop('checked')){
-//         var a = $(this).attr('value');
-//         console.log(a);
-//     }
-// });
-
-// $("#save").click(function(){
-//     $("#template_form").removeClass("form_show");
-//     $("#cover").css("display", "none");
-    
-//     var firstnameid = $("#template_form").find("#firstnameid").val();
-//     var lastnameid = $("#template_form").find("#lastnameid").val();
-//     var dobid = $("#template_form").find("#dobid").val();
-//     var mobileid = $("#template_form").find("#mobileid").val();
-//     var aadharid = $("#template_form").find("#aadharid").val();
-//     var street = $("#template_form").find("#street").val();
-//     var pin = $("#template_form").find("#pin").val();
-//     var emailid = $("#template_form").find("#emailid").val();
-//     var id = $("#template_form").find("#temp_id").val();
-
-//     $.ajax({
-//         url: "update.php",
-//         type: "POST",
-//         data: {
-//             "id": id,
-//             "firstnameid": firstnameid,
-//             "lastnameid": lastnameid,
-//             "emailid": emailid,
-//             "dobid": dobid,
-//             "mobileid": mobileid,
-//             "aadharid": aadharid,
-//             "street": street,
-//             "pin": pin
-//         },
-//         success: function(response){
-//             console.log(response);
-//             $("#template_form").find("input").each(function(){
-//                 $(this).val("");
-//             });
-//             load_temp();
-//         }
-//     });
-// });
 
 // Function to initialize the page with green background for Personal Details
 window.onload = function() {
@@ -49,12 +5,13 @@ window.onload = function() {
     document.getElementById("pdIcon").classList.remove('fa-circle-o'); // Remove unchecked icon class
     document.getElementById("pdIcon").classList.add('fa-check-circle'); 
     document.getElementById("pd").style.color = "white";
+    loadCountries();
+
 
 }
 
 // Function to hide personal details section and show address details section
 function disHide1() {
-
 
     if (!validatePersonalDetails()) {
         return;
@@ -162,20 +119,15 @@ function disHide3() {
     }
 
 
+    
 
 
     document.getElementById("oid").style.display = "none";
-    document.getElementById("fid").style.display = "block";
-
     document.getElementById("od").style.backgroundColor = "white"; // Reset background color of Address Details
     document.getElementById("od").style.color="green";
     
 
 }
-
-
-
-
 
 
 
@@ -269,7 +221,8 @@ function validateAadhar() {
     var aadharValue = aadharInput.value.trim();
 
     // Regular expression to check if the input is a valid Aadhar number (12 digits)
-    var aadharRegex = /^\d{12}$/;
+    var aadharRegex = /^[1-9]\d{11}$/
+    ;
 
     // Check if the input is empty or does not match the Aadhar number format
     if (aadharValue === '') {
@@ -312,7 +265,7 @@ function validateMobile() {
     var mobileValue = mobileInput.value.trim();
 
     // Regular expression to check if the input is a valid mobile number (10 digits)
-    var mobileRegex = /^[0-9]{10}$/;
+    var mobileRegex = /^[6-9]\d{9}$/;
 
     // Check if the input is empty or does not match the mobile number format
     if (mobileValue === '') {
@@ -514,7 +467,24 @@ function validateOtherDetails() {
 function validateUsername() {
     var usernameInput = document.querySelector('.username input[type="text"]');
     var usernameValue = usernameInput.value.trim();
-    var usernameRegex= /^[0-9A-Za-z]{6,16}$/    ;
+    var usernameRegex= function validateUsername() {
+    var usernameInput = document.querySelector('.username input[type="text"]');
+    var usernameValue = usernameInput.value.trim();
+    var usernameRegex = /^[a-zA-Z0-9]{6,16}$/; // Regex to check for alphanumeric characters and length between 6 and 16 characters
+
+    if (usernameValue === '') {
+        document.getElementById("usernameError").innerHTML = "Username is required.";
+        highlightInvalidField(usernameInput);
+        return false;
+    } else if (!usernameRegex.test(usernameValue)) {
+        document.getElementById("usernameError").innerHTML = "Please enter a valid username between 6 and 16 characters.";
+        highlightInvalidField(usernameInput);
+        return false;
+    }
+
+    return true;
+}
+;
     if (usernameValue === '') {
         document.getElementById("usernameError").innerHTML = ("Username is required.");
         highlightInvalidField(usernameInput);
@@ -530,11 +500,27 @@ function validateUsername() {
 function validatePassword() {
     var passwordInput = document.querySelector('.password input[type="password"]');
     var password = passwordInput.value.trim();
+    var uppercaseRegex = /[A-Z]/; // Regex to check for at least one uppercase letter
+    var symbolRegex = /[-!$%^&*@#()_+|~=`{}\[\]:";'<>?,.\/]/; // Regex to check for at least one symbol
+
     if (password === "") {
-        document.getElementById("passwordError").innerHTML =("Password is required.");
+        document.getElementById("passwordError").innerHTML = "Password is required.";
+        highlightInvalidField(passwordInput);
+        return false;
+    } else if (password.length < 8) {
+        document.getElementById("passwordError").innerHTML = "Password should be at least 8 characters long.";
+        highlightInvalidField(passwordInput);
+        return false;
+    } else if (!uppercaseRegex.test(password)) {
+        document.getElementById("passwordError").innerHTML = "Password should contain at least one uppercase letter.";
+        highlightInvalidField(passwordInput);
+        return false;
+    } else if (!symbolRegex.test(password)) {
+        document.getElementById("passwordError").innerHTML = "Password should contain at least one symbol.";
         highlightInvalidField(passwordInput);
         return false;
     }
+
     return true;
 }
 
@@ -681,3 +667,87 @@ document.getElementById('land').addEventListener('input', validLandmark);documen
 //other details
 document.getElementById('username').addEventListener('input', validateUsername);
 document.getElementById('password').addEventListener('input', validatePassword);
+
+
+
+
+
+
+
+
+
+
+        var config = {
+            cUrl: 'https://api.countrystatecity.in/v1/countries',
+            ckey: 'NHhvOEcyWk50N2Vna3VFTE00bFp3MjFKR0ZEOUhkZlg4RTk1MlJlaA=='
+        }
+       
+    var countrySelect = document.getElementById('count'),
+    stateSelect = document.getElementById('st'),
+    citySelect = document.getElementById('city')
+    
+
+        function loadCountries() {
+        
+            let apiEndPoint = config.cUrl
+        
+            fetch(apiEndPoint, {headers: {"X-CSCAPI-KEY": config.ckey}})
+            .then(Response => Response.json())
+            .then(data => {
+                    data.forEach(country => {
+                    const option = document.createElement('option')
+                    option.value = country.iso2
+                    option.textContent = country.name 
+                    countrySelect.appendChild(option)
+                })
+            })
+            .catch(error => console.error('Error loading countries:', error))
+        
+            stateSelect.disabled = true
+            citySelect.disabled = true
+            stateSelect.style.pointerEvents = 'none'
+            citySelect.style.pointerEvents = 'none'
+        }
+        
+        
+        function loadStates() {
+            stateSelect.disabled = false
+            citySelect.disabled = true
+            stateSelect.style.pointerEvents = 'auto'
+            citySelect.style.pointerEvents = 'none'
+        
+            const selectedCountryCode = countrySelect.value
+            stateSelect.innerHTML = '<option value="">Select State</option>'
+            citySelect.innerHTML = '<option value="">Select City</option>'
+        
+            fetch(`${config.cUrl}/${selectedCountryCode}/states`, {headers: {"X-CSCAPI-KEY": config.ckey}})
+            .then(response => response.json())
+            .then(data => {
+                data.forEach(state => {
+                    const option = document.createElement('option')
+                    option.value = state.iso2
+                    option.textContent = state.name 
+                    stateSelect.appendChild(option)
+                })
+            })
+            .catch(error => console.error('Error loading countries:', error))
+        }
+        
+        
+            function loadCities() {
+            citySelect.disabled = false
+            citySelect.style.pointerEvents = 'auto'
+            const selectedCountryCode = countrySelect.value
+            const selectedStateCode = stateSelect.value
+            citySelect.innerHTML = '<option value="">Select City</option>' 
+            fetch(`${config.cUrl}/${selectedCountryCode}/states/${selectedStateCode}/cities`, {headers: {"X-CSCAPI-KEY": config.ckey}})
+            .then(response => response.json())
+            .then(data => {
+                data.forEach(city => {
+                    const option = document.createElement('option')
+                    option.value = city.iso2
+                    option.textContent = city.name 
+                    citySelect.appendChild(option)
+                })
+            })
+        }

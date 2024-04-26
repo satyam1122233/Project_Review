@@ -404,6 +404,16 @@ div#cover {
   margin-right: 5px;
 }
 
+.col4 {
+  margin: 1%;
+  border: 1px solid grey;
+  padding: 1%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+
+}
 
 .input_hobbies{
   margin-right: 2%;

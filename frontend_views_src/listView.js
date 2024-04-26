@@ -179,7 +179,10 @@ $(document).ready(function(){
                         <div class="s_no col col-1" data-label="S_No"></div>
 
                         <div class="col col-2" data-label="Student Details">
-                        <div class = "st_image"><img src = '`+dat[i].photo_name+`' alt = 'st'></div><div class="f_name">`+dat[i].first_name+`</div><div class="l_name">`+dat[i].last_name+`</div></div>
+                        <div class = "st_image">  
+                          <img src="data:image/jpeg;base64,`+ dat[i].image_blb + `"alt="st">
+                        </div>
+                        <div class="f_name">`+dat[i].first_name+`</div><div class="l_name">`+dat[i].last_name+`</div></div>
 
                         <div class="col col-3" data-label="Contact Details">
                         <div class="mobile"><i class="Icon fa fa-phone-alt"></i>`+dat[i].mobile+`</div>

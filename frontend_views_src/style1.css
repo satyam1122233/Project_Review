@@ -1,8 +1,9 @@
 div.container {
-    border: 3px solid #ccc; /* Set border properties */
-    padding: 30px; /* Optional: Add padding for better spacing */
-    margin: 30px;
+    padding: 15px;
     height: 500px;
+    margin-left: 20px;
+    margin-right: 20px;
+
 }
 
 .ul {
@@ -100,6 +101,7 @@ div.dobmobile{
     padding-left: 3px;
     padding-right: 3px;
     border-radius: 2px;
+    align-content: center;
    
 }
 
@@ -316,6 +318,7 @@ div.backButton{
 }
 .hobbies_flex{
     margin-top: 5px;
+    font-size: 18px;
 }
 
 .fourth-row-p3{
@@ -362,18 +365,24 @@ span{
     width: 100%;
     padding: 5px;
     text-align: center;
+    font-size: 20px;
+
 }
 #ad{
     border: 1px solid #ccc; /* Example border style */
     width: 100%;
     padding: 5px;
     text-align: center;
+    font-size: 20px;
+
 }
 #od{
     border: 1px solid #ccc; /* Example border style */
     width: 100%;
     padding: 5px;
     text-align: center;
+    font-size: 20px;
+
 }
 
 .addressdetails,
@@ -454,6 +463,28 @@ span{
 }
 
 
-
-
-
+header{
+    font-size: 20px;
+}
+input {
+    font-size: 18px; /* Set the desired height */
+  }
+select{
+    font-size: 18px;
+}
+textarea{
+    font-size: 18px;
+    width: 880px;
+    margin-right: 10px;
+}
+.gender{
+    font-size: 18px;
+}
+  main{
+    margin-top: 3%;
+  }
+  label{
+    font-weight: bold;
+    font-family: sans-serif;
+    font-size: 16px;
+  }

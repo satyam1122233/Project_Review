@@ -158,7 +158,7 @@
                             </div>
 
                             <div class="upload-photo-input-container">
-                                <input type="file" name="userphoto" id="user-photo" required />
+                                <input type="file" name="userphoto" id="user-photo"  />
                                 <div id="uploadPhotoError" class="error"></div> <!-- Error message for aadhar -->
                             </div>
 
@@ -198,26 +198,17 @@
                         <div class="first-row-p2">
                             <div class="country default-height">
                                 <label for="count">Country<span>*</span></label>
-                                <select name="country" id="count">
-                                    <option value="ind" selected>India</option>
-                                    <option value="swi">Switzerland</option>
-                                    <option value="ger">Germany</option>
-                                    <option value="can">Canada</option>
-                                    <option value="us">United States</option>
-                                    <option value="swe">Sweden</option>
+                                <select name="country" id="count" onload = "loadStates()">
+                                   
+                                   
                                 </select>
 
 
                             </div>
                             <div class="state default-height">
                                 <label for="st">State<span>*</span></label>
-                                <select name="state" id="st">
-                                    <option value="utt" selected>Uttar Pradesh</option>
-                                    <option value="ker">Kerala</option>
-                                    <option value="raj">Rajasthan</option>
-                                    <option value="goa">Goa</option>
-                                    <option value="pun">Punjab</option>
-                                    <option value="him">Himachal Pradesh</option>
+                                <select name="state" id="st" onload="loadCities()">
+                                   
                                 </select>
 
                             </div>
@@ -377,17 +368,18 @@
 
             </form>
         </main>
-        <div id="fid">
+        <!-- <div id="fid">
             <p>Your data is successfully saved!</p>
             <br>
             <a href="listview.html">View</a>
-        </div>
+        </div> -->
 
     </div> <!--container close-->
     <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 
 
     <script type="text/javascript" src="script.js"></script>
+    
 </body>
 
 </html>

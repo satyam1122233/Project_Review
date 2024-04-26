@@ -44,6 +44,7 @@ $new_id = $last_id + 1;
 
 
 
+
 // Check if image file is uploaded
 if ($upload && isset($_FILES['userphoto']['tmp_name']) && $_FILES['userphoto']['tmp_name'] != '') {
     $image = $_FILES['userphoto']['tmp_name'];
@@ -54,7 +55,7 @@ if ($upload && isset($_FILES['userphoto']['tmp_name']) && $_FILES['userphoto']['
 } else {
     
   // If no  is uploaded, use the default image
-  $default_image_path = '"C:\wamp64\www\DIS_GIT_satyamk_miet\default_profile_img.jpeg"'; 
+  $default_image_path = 'C:\wamp64\www\DIS_GIT_satyamk_miet\default_profile_img.jpeg'; 
   $image_blb = addslashes(file_get_contents($default_image_path));
   $photo_name = 'default_image.jpg'; 
 
@@ -66,7 +67,10 @@ if ($upload && isset($_FILES['userphoto']['tmp_name']) && $_FILES['userphoto']['
 $information = mysqli_query($conn, $query);
 
 if ($information) {
-    echo "Data inserted into database.";
+  echo "<script>
+  window.location.href = 'fid_success.html';
+  </script>";
+
 } else {
     echo "Failed to insert data into database: " . mysqli_error($conn);
 }
