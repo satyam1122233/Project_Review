@@ -327,8 +327,7 @@ function disHide3() {
 
 function validatePersonalDetails() {
   //  Add validation for personal details fields (e.g., first name, email, etc.)
-  return true;
-    // return validateFirstName() && validateLastName()&& validateEmail() && validateAadhar() && validateDOB() && validateMobile() && validateGender();
+    return validateFirstName() && validateLastName()&& validateEmail() && validateAadhar() && validateDOB() && validateMobile() && validateGender();
 
 }
 
@@ -661,33 +660,30 @@ function validateOtherDetails() {
 function validateUsername() {
     var usernameInput = document.querySelector('.username input[type="text"]');
     var usernameValue = usernameInput.value.trim();
-    var usernameRegex= function validateUsername() {
-    var usernameInput = document.querySelector('.username input[type="text"]');
-    var usernameValue = usernameInput.value.trim();
-    var usernameRegex = /^[a-zA-Z0-9]{6,16}$/; // Regex to check for alphanumeric characters and length between 6 and 16 characters
+    var usernameRegex = /^[0-9A-Za-z._]{6,16}$/; // Regex for username validation
 
     if (usernameValue === '') {
         document.getElementById("usernameError").innerHTML = "Username is required.";
-        $("#submitid").off("click");
+        highlightInvalidField(usernameInput);
+        return false;
+    } else if (usernameValue.length < 6) {
+        document.getElementById("usernameError").innerHTML = "Username should be at least 6 characters long.";
+        highlightInvalidField(usernameInput);
+        return false;
+    } else if (usernameValue.length > 16) {
+        document.getElementById("usernameError").innerHTML = "Username should not exceed 16 characters.";
         highlightInvalidField(usernameInput);
         return false;
     } else if (!usernameRegex.test(usernameValue)) {
-        document.getElementById("usernameError").innerHTML = "Please enter a valid username between 6 and 16 characters.";
-        $("#submitid").off("click");
-
+        document.getElementById("usernameError").innerHTML = "Username should contain only letters, numbers, periods (.), and underscores (_)";
         highlightInvalidField(usernameInput);
         return false;
-    }
-    if (usernameValue != '') {
-
-        $("#submitid").on("click");
-
     }
 
     return true;
 }
 
-}
+
 
 function validatePassword() {
     var passwordInput = document.querySelector('.password input[type="password"]');
@@ -863,84 +859,3 @@ document.getElementById('password').addEventListener('input', validatePassword);
 
 
 
-
-
-
-
-
-
-
-    //     var config = {
-    //         cUrl: 'https://api.countrystatecity.in/v1/countries',
-    //         ckey: 'NHhvOEcyWk50N2Vna3VFTE00bFp3MjFKR0ZEOUhkZlg4RTk1MlJlaA=='
-    //     }
-       
-    // var countrySelect = document.getElementById('count'),
-    // stateSelect = document.getElementById('st'),
-    // citySelect = document.getElementById('city')
-    
-
-    //     function loadCountries() {
-        
-    //         let apiEndPoint = config.cUrl
-        
-    //         fetch(apiEndPoint, {headers: {"X-CSCAPI-KEY": config.ckey}})
-    //         .then(Response => Response.json())
-    //         .then(data => {
-    //                 data.forEach(country => {
-    //                 const option = document.createElement('option')
-    //                 option.value = country.iso2
-    //                 option.textContent = country.name 
-    //                 countrySelect.appendChild(option)
-    //             })
-    //         })
-    //         .catch(error => console.error('Error loading countries:', error))
-        
-    //         stateSelect.disabled = true
-    //         citySelect.disabled = true
-    //         stateSelect.style.pointerEvents = 'none'
-    //         citySelect.style.pointerEvents = 'none'
-    //     }
-        
-        
-    //     function loadStates() {
-    //         stateSelect.disabled = false
-    //         citySelect.disabled = true
-    //         stateSelect.style.pointerEvents = 'auto'
-    //         citySelect.style.pointerEvents = 'none'
-        
-    //         const selectedCountryCode = countrySelect.value
-    //         stateSelect.innerHTML = '<option value="">Select State</option>'
-    //         citySelect.innerHTML = '<option value="">Select City</option>'
-        
-    //         fetch(`${config.cUrl}/${selectedCountryCode}/states`, {headers: {"X-CSCAPI-KEY": config.ckey}})
-    //         .then(response => response.json())
-    //         .then(data => {
-    //             data.forEach(state => {
-    //                 const option = document.createElement('option')
-    //                 option.value = state.iso2
-    //                 option.textContent = state.name 
-    //                 stateSelect.appendChild(option)
-    //             })
-    //         })
-    //         .catch(error => console.error('Error loading countries:', error))
-    //     }
-        
-        
-    //         function loadCities() {
-    //         citySelect.disabled = false
-    //         citySelect.style.pointerEvents = 'auto'
-    //         const selectedCountryCode = countrySelect.value
-    //         const selectedStateCode = stateSelect.value
-    //         citySelect.innerHTML = '<option value="">Select City</option>' 
-    //         fetch(`${config.cUrl}/${selectedCountryCode}/states/${selectedStateCode}/cities`, {headers: {"X-CSCAPI-KEY": config.ckey}})
-    //         .then(response => response.json())
-    //         .then(data => {
-    //             data.forEach(city => {
-    //                 const option = document.createElement('option')
-    //                 option.value = city.iso2
-    //                 option.textContent = city.name 
-    //                 citySelect.appendChild(option)
-    //             })
-    //         })
-    //     }

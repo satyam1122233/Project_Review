@@ -35,6 +35,8 @@ error_reporting(E_ALL);
             'username' => $row['username'],
             'password' => $row['password'],
             'state' => $row['state'],
+            'city'=> $row['city'],
+            'country'=> $row['country'],
             'aadhar_no' => $row['aadhar_no'],
             'date_of_birth' => $row['date_of_birth'],
             'gender' => $row['gender'],
