@@ -574,7 +574,9 @@ function isRadioButtonChecked() {
         }
     }
     // If no radio button is checked, return false
-    alert('Please choose whether to upload a photo: Yes or No is required');
+    
+    document.getElementById("uploadPhotoError").innerHTML = "Please choose whether to upload a photo: Yes or No is required";
+    
     return false;
     
 }
@@ -619,15 +621,40 @@ function replacePhoto() {
 
 
 
-
-
-
-
-
 function isChooseFileInputEmpty() {
     var fileInput = document.getElementById('user-photo');
     return fileInput.files.length === 0;
 }
+
+// Add event listener to the file input for photo upload
+document.getElementById('user-photo').addEventListener('change', function() {
+    var fileInput = this;
+    var file = fileInput.files[0]; // Get the selected file
+
+    // Check if a file is selected
+    if (file) {
+        // Check if the file size exceeds 64 KB (64 * 1024 bytes)
+        if (file.size > 64 * 1024) {
+            // Display error message
+            document.getElementById("uploadPhotoError").innerHTML = "Please select a photo under 64 KB";
+            // Clear the selected file
+            fileInput.value = '';
+            return;
+            // Check if the file type is an image
+        }else if (!file.type.startsWith('image/')) {
+            // Display error message if the selected file is not an image
+            document.getElementById("uploadPhotoError").innerHTML = "Please select an image file";
+            // Clear the selected file
+            fileInput.value = '';
+            return;
+        }
+         else
+         {
+            // Clear any previous error message
+            document.getElementById("uploadPhotoError").innerHTML = "";
+        }
+    }
+});
 
 
 
