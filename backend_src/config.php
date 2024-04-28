@@ -15,5 +15,5 @@ if ($conn->connect_error) {
   die("Connection failed: " . $conn->connect_error);
 }
 
-$table1="tbl_student_registration"; 
+
 ?>

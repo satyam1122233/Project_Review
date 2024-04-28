@@ -23,9 +23,9 @@
 
   
 
-    // $sql = "INSERT INTO `tbl_student_registration` (`id`, `first_name`, `last_name`,`date_of_birth`, `gender`, `email_id`, `mobile`, `aadhar_no`, `country`, `state`, `city`, `street`, `landmark`, `pincode`, `username`, `password`,`hobbies`) VALUES (NULL, '$first_name', '$last_name','$dob', '$gender', '$email', '$phone', '$aadhar', '$country', '$state', '$city', '$street', '$landmark', '$pincode', '$user_name', '$password','$hobbies')";
 
-  //  $sql = "UPDATE `tbl_student_registration` SET `first_name` = '$first_name', `last_name` = '$last_name', `date_of_birth` = '$dob', `gender` = '$gender', `email_id` = '$email', `mobile` = '$phone', `aadhar_no` = '$aadhar', `country` = '$country', `state` = '$state', `city` = '$city', `street` = '$street', `landmark` = '$landmark', `pincode` = '$pincode', `username` = '$user_name', `password` = '$password', `hobbies` = '$hobbies' WHERE `tbl_student_registration`.`id` = $id";
+
+ 
 
   $sql = "UPDATE `tbl_student_registration` SET `first_name` = '$first_name', `last_name` = '$last_name', `date_of_birth` = '$dob', `gender` = '$gender',`email_id` = '$email', `mobile` = '$phone', `aadhar_no` = '$aadhar',`country` = '$country', `state` = '$state', `city` = '$city', `street` = '$street',`landmark` = '$landmark', `pincode` = '$pincode',`username` = '$user_name', `password` = '$password', `hobbies` = '$hobbies' WHERE `tbl_student_registration`.`id` = $id";
 
