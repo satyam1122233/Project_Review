@@ -412,26 +412,55 @@ function validateEmail() {
 function validateAadhar() {
     var aadharInput = document.getElementById('aadharid');
     var aadharValue = aadharInput.value.trim();
-
-    // Regular expression to check if the input is a valid Aadhar number (12 digits)
-    var aadharRegex = /^[1-9]\d{11}$/
-    ;
+    var aadharRegex = /^[1-9]\d{11}$/;
 
     // Check if the input is empty or does not match the Aadhar number format
     if (aadharValue === '') {
         document.getElementById("aadharError").innerHTML = "Please enter aadhar number";
-highlightInvalidField(aadharInput);
-        return false;
+        highlightInvalidField(aadharInput);
+        return false; // validation failed
     } else if (!aadharRegex.test(aadharValue)) {
         document.getElementById("aadharError").innerHTML = "Please enter a valid Aadhar number of 12 digits";
         highlightInvalidField(aadharInput);
-        return false;
+        return false; // validation failed
     } else {
-        document.getElementById("aadharError").innerHTML = "";
+        var xhr = new XMLHttpRequest();
+        var isAadharNumberExist = true;
+        var url = "../backend_src/fetch.php";
+        xhr.open("POST", url, false); // Make the XHR call synchronous
+        xhr.setRequestHeader("Content-Type", "application/json");
 
-        return true;
+        xhr.onload = function () {
+            if (xhr.status === 200) {
+                var responseData = JSON.parse(xhr.responseText);
+                responseData.forEach(function (student) {
+                    if (student.aadhar_no === aadharValue) {
+                        isAadharNumberExist = false; // If Aadhar number is already registered, set to false
+                    }
+                });
+            } else {
+                console.error("Request failed with status: " + xhr.status);
+            }
+        };
+
+        xhr.onerror = function () {
+            console.error("Request failed");
+        };
+
+        xhr.send(JSON.stringify({ aadhar_no: aadharValue }));
+
+        if (!isAadharNumberExist) {
+            document.getElementById("aadharError").innerHTML = "Aadhar number is already registered";
+            highlightInvalidField(aadharInput);
+            return false; // validation failed
+        } else {
+            document.getElementById("aadharError").innerHTML = "";
+            return true; // validation passed
+        }
     }
 }
+
+
 
 // Function to validate date of birth
 function validateDOB() {
@@ -470,7 +499,40 @@ function validateMobile() {
         highlightInvalidField(mobileInput);
         return false;
     } else {
-        return true;
+        var xhr = new XMLHttpRequest();
+        var isMobileNumberExist = true;
+        var url = "../backend_src/fetch.php";
+        xhr.open("POST", url, false); // Make the XHR call synchronous
+        xhr.setRequestHeader("Content-Type", "application/json");
+
+        xhr.onload = function () {
+            if (xhr.status === 200) {
+                var responseData = JSON.parse(xhr.responseText);
+                responseData.forEach(function (student) {
+                    if (student.mobile === mobileValue) {
+                        isMobileNumberExist = false; // If Mobile number is already registered, set to false
+                    }
+                });
+            } else {
+                console.error("Request failed with status: " + xhr.status);
+            }
+        };
+
+        xhr.onerror = function () {
+            console.error("Request failed");
+        };
+
+        xhr.send(JSON.stringify({ mobile: mobileValue }));
+
+        if (!isMobileNumberExist) {
+            document.getElementById("mobileError").innerHTML = "Mobile number is already registered";
+            highlightInvalidField(aadharInput);
+            return false; // validation failed
+        } else {
+            document.getElementById("mobileError").innerHTML = "";
+            return true; // validation passed
+        }
+    
     }
 }
 
@@ -856,6 +918,5 @@ document.getElementById('land').addEventListener('input', validLandmark);documen
 //other details
 document.getElementById('username').addEventListener('input', validateUsername);
 document.getElementById('password').addEventListener('input', validatePassword);
-
 
 

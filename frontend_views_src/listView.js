@@ -87,11 +87,10 @@ $(document).ready(function(){
         var city = $(this).closest(".table-row").find(".city").text().replace(/,/g, '');
         var state = $(this).closest(".table-row").find(".state_name").text().replace(/,/g, '');
         var country = $(this).closest(".table-row").find(".country_name").text();
-
         var pin = $(this).closest(".table-row").find(".pincode").text().replace(/,/g, '');
         var email = $(this).closest(".table-row").find(".email").text();
-        var username = $(this).closest(".table-row").find(".username").text();
-        var password = $(this).closest(".table-row").find(".password").text();
+        var username = $(this).closest(".table-row").find(".username").text().trim();
+        var password = $(this).closest(".table-row").find(".password").text().trim();
         var genderid = $(this).closest(".table-row").find(".gender").text();
         var hobbiesText = $(this).closest(".table-row").find(".hobbies").text().split(",");
        
