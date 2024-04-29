@@ -362,6 +362,8 @@ div#cover {
    margin: 0% 6%; /* Adjust margin as needed */
 
 }
+
+/*plus button which will go to registration page on click*/
 .plusBtnBackground {
   width: 40px;
   height: 40px;
@@ -370,6 +372,7 @@ div#cover {
   display: flex;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
 }
 
 
