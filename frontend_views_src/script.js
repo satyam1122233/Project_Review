@@ -1,8 +1,6 @@
 // ===============================================dropdowns============
 // ===============================================dropdowns============
 // ===============================================dropdowns============
-validateUsername();
-$("#username").change(validateUsername());
 
 var countrySateCityinfo = {
     India:{
@@ -425,7 +423,7 @@ function validateAadhar() {
         return false; // validation failed
     } else {
         var xhr = new XMLHttpRequest();
-        var isAadharNumberExist = true;
+        var isAadharNumberExist = false;
         var url = "../backend_src/fetch.php";
         xhr.open("POST", url, false); // Make the XHR call synchronous
         xhr.setRequestHeader("Content-Type", "application/json");
@@ -435,7 +433,7 @@ function validateAadhar() {
                 var responseData = JSON.parse(xhr.responseText);
                 responseData.forEach(function (student) {
                     if (student.aadhar_no === aadharValue) {
-                        isAadharNumberExist = false; // If Aadhar number is already registered, set to false
+                        isAadharNumberExist = true; // If Aadhar number is already registered, set to false
                     }
                 });
             } else {
@@ -449,7 +447,7 @@ function validateAadhar() {
 
         xhr.send(JSON.stringify({ aadhar_no: aadharValue }));
 
-        if (!isAadharNumberExist) {
+        if (isAadharNumberExist) {
             document.getElementById("aadharError").innerHTML = "Aadhar number is already registered";
             highlightInvalidField(aadharInput);
             return false; // validation failed
@@ -500,7 +498,7 @@ function validateMobile() {
         return false;
     } else {
         var xhr = new XMLHttpRequest();
-        var isMobileNumberExist = true;
+        var isMobileNumberExist = false;
         var url = "../backend_src/fetch.php";
         xhr.open("POST", url, false); // Make the XHR call synchronous
         xhr.setRequestHeader("Content-Type", "application/json");
@@ -510,7 +508,7 @@ function validateMobile() {
                 var responseData = JSON.parse(xhr.responseText);
                 responseData.forEach(function (student) {
                     if (student.mobile === mobileValue) {
-                        isMobileNumberExist = false; // If Mobile number is already registered, set to false
+                        isMobileNumberExist = true; // If Mobile number is already registered, set to false
                     }
                 });
             } else {
@@ -524,7 +522,7 @@ function validateMobile() {
 
         xhr.send(JSON.stringify({ mobile: mobileValue }));
 
-        if (!isMobileNumberExist) {
+        if (isMobileNumberExist) {
             document.getElementById("mobileError").innerHTML = "Mobile number is already registered";
             highlightInvalidField(aadharInput);
             return false; // validation failed
@@ -749,7 +747,7 @@ function validateOtherDetails() {
 function validateUsername() {
     var usernameInput = document.querySelector('.username input[type="text"]');
     var usernameValue = usernameInput.value.trim();
-    var usernameRegex = /^[0-9A-Za-z._]{6,16}$/; // Regex for username validation
+    var usernameRegex = /^.{6,16}$/; // Regex for username validation
 
     if (usernameValue === '') {
         document.getElementById("usernameError").innerHTML = "Username is required.";
@@ -767,9 +765,42 @@ function validateUsername() {
         document.getElementById("usernameError").innerHTML = "Username should contain only letters, numbers, periods (.), and underscores (_)";
         highlightInvalidField(usernameInput);
         return false;
+    }else {
+        var xhr = new XMLHttpRequest();
+        var isUserNameExist = false;
+        var url = "../backend_src/fetch.php";
+        xhr.open("POST", url, false); 
+        xhr.setRequestHeader("Content-Type", "application/json");
+
+        xhr.onload = function () {
+            if (xhr.status === 200) {
+                var responseData = JSON.parse(xhr.responseText);
+                responseData.forEach(function (student) {
+                    if (student.username === usernameValue) {
+                        isUserNameExist = true; // If User number is already registered, set to false
+                    }
+                });
+            } else {
+                console.error("Request failed with status: " + xhr.status);
+            }
+        };
+
+        xhr.onerror = function () {
+            console.error("Request failed");
+        };
+
+        xhr.send(JSON.stringify({ username: usernameValue }));
+
+        if (isUserNameExist) {
+            document.getElementById("usernameError").innerHTML = "Username is already registered";
+            highlightInvalidField(aadharInput);
+            return false; // validation failed
+        } else {
+            document.getElementById("usernameError").innerHTML = "";
+            return true; // validation passed
+        }
     }
 
-    return true;
 }
 
 
