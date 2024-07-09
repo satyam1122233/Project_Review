@@ -82,12 +82,10 @@ div.second-row-p1 > *:last-child {
 
 div.dobmobile{
     display: flex;
-    
+    justify-content: space-between;
 }
 
-.mobile{
-    margin-left: 20px;
-}
+
 .mobile input{
     cursor: pointer;
     /* Change background image to menu icon */
@@ -219,23 +217,21 @@ display: block;
 
 .second-row-p2 {
     display: flex;
+    
     justify-content: space-between;
-    align-items: flex-start; /* Align items to the start of the container */
     margin-top: 25px;
 }
 
-.street,
-.landmarkpincode {
-    flex: 1; /* Distribute available space equally */
-}
+
 
 .landmarkpincode {
     
     display: flex;
     flex-direction: column; /* Align "Landmark" and "Pincode" vertically */
-    margin-left: 10px;
+   
     
 }
+
 
 .landmark {
     margin-top: 10px; /* Add space between "Landmark" and "Pincode" */
@@ -474,8 +470,7 @@ select{
 }
 textarea{
     font-size: 18px;
-    width: 880px;
-    margin-right: 10px;
+   
 }
 .gender{
     font-size: 18px;
@@ -483,6 +478,7 @@ textarea{
   main{
     margin-top: 3%;
   }
+  
   label{
     font-weight: bold;
     font-family: sans-serif;

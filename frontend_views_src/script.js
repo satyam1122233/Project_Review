@@ -116,6 +116,7 @@ var countrySateCityinfo = {
         for(let country in countrySateCityinfo){
             console.log(country);
             selectCountry.options[selectCountry.options.length] = new Option(country, country)
+            //first country represents the text that will be displayed for the option in the dropdown menu
         }
 
 
@@ -325,8 +326,8 @@ function disHide3() {
 
 function validatePersonalDetails() {
   //  Add validation for personal details fields (e.g., first name, email, etc.)
-    return validateFirstName() && validateLastName()&& validateEmail() && validateAadhar() && validateDOB() && validateMobile() && validateGender();
-
+    // return validateFirstName() && validateLastName()&& validateEmail() && validateAadhar() && validateDOB() && validateMobile() && validateGender();
+return true
 }
 
 
@@ -422,39 +423,36 @@ function validateAadhar() {
         highlightInvalidField(aadharInput);
         return false; // validation failed
     } else {
-        var xhr = new XMLHttpRequest();
         var isAadharNumberExist = false;
-        var url = "../backend_src/fetch.php";
-        xhr.open("POST", url, false); // Make the XHR call synchronous
-        xhr.setRequestHeader("Content-Type", "application/json");
+var url = "../backend_src/fetch.php";
 
-        xhr.onload = function () {
-            if (xhr.status === 200) {
-                var responseData = JSON.parse(xhr.responseText);
-                responseData.forEach(function (student) {
-                    if (student.aadhar_no === aadharValue) {
-                        isAadharNumberExist = true; // If Aadhar number is already registered, set to false
-                    }
-                });
-            } else {
-                console.error("Request failed with status: " + xhr.status);
+$.ajax({
+    type: "POST",
+    url: url,
+    contentType: "application/json",
+    dataType: "json",
+    async: false,
+    success: function(responseData) {
+        responseData.forEach(function(student) {
+            if (student.aadhar_no === aadharValue) {
+                isAadharNumberExist = true;
             }
-        };
+        });
+    },
+    error: function(xhr, status, error) {
+        console.error("Request failed with status: " + xhr.status);
+    }
+});
 
-        xhr.onerror = function () {
-            console.error("Request failed");
-        };
+if (isAadharNumberExist) {
+    document.getElementById("aadharError").innerHTML = "Aadhar number is already registered";
+    highlightInvalidField(aadharInput);
+    return false;
+} else {
+    document.getElementById("aadharError").innerHTML = "";
+}
+    return true;
 
-        xhr.send(JSON.stringify({ aadhar_no: aadharValue }));
-
-        if (isAadharNumberExist) {
-            document.getElementById("aadharError").innerHTML = "Aadhar number is already registered";
-            highlightInvalidField(aadharInput);
-            return false; // validation failed
-        } else {
-            document.getElementById("aadharError").innerHTML = "";
-            return true; // validation passed
-        }
     }
 }
 
@@ -501,7 +499,7 @@ function validateMobile() {
         var isMobileNumberExist = false;
         var url = "../backend_src/fetch.php";
         xhr.open("POST", url, false); // Make the XHR call synchronous
-        xhr.setRequestHeader("Content-Type", "application/json");
+        // xhr.setRequestHeader("Content-Type", "application/json");
 
         xhr.onload = function () {
             if (xhr.status === 200) {
@@ -520,11 +518,11 @@ function validateMobile() {
             console.error("Request failed");
         };
 
-        xhr.send(JSON.stringify({ mobile: mobileValue }));
+        xhr.send();
 
         if (isMobileNumberExist) {
             document.getElementById("mobileError").innerHTML = "Mobile number is already registered";
-            highlightInvalidField(aadharInput);
+            highlightInvalidField(mobileInput);
             return false; // validation failed
         } else {
             document.getElementById("mobileError").innerHTML = "";
@@ -789,7 +787,6 @@ function validateUsername() {
             console.error("Request failed");
         };
 
-        xhr.send(JSON.stringify({ username: usernameValue }));
 
         if (isUserNameExist) {
             document.getElementById("usernameError").innerHTML = "Username is already registered";

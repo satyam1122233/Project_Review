@@ -135,8 +135,6 @@ $(document).ready(function(){
 
 
 
-
-
 });
 
 
@@ -171,11 +169,11 @@ $(document).ready(function(){
                 console.log(dat);
                 var s_no=1;
 
-                $("#tbl_student_registration").children().not("#col_name").remove();
+                $("#student_registration").children().not("#col_name").remove();
                 for(var i = dat.length-1; i>=0; i--){
-                    $("#tbl_student_registration").append(`<li class="table-row">
+                    $("#student_registration").append(`<li class="table-row">
                         <div class="id col col-1" data-label="S_No">`+dat[i].id+`</div>
-                        <div class="s_no col col-1" data-label="S_No"></div>
+                        <div class="s_no col col-1" data-label="S_No">`+s_no+`</div>
 
                         <div class="col col-2" data-label="Student Details">
                         <div class = "st_image">  
@@ -225,12 +223,13 @@ $(document).ready(function(){
                             </div>
                         </div>
                     </li>`);
+                    s_no++;
                 }
 
-                $(".table-row").each(function(){
-                    $(this).find(".s_no").html(s_no);
-                    s_no++;
-                });
+                // $(".table-row").each(function(){
+                //     $(this).find(".s_no").html(s_no);
+                //     s_no++;
+                // });
             }
         });
 

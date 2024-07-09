@@ -35,6 +35,7 @@ $hobbies_str = implode(",", $hobbies);
 
 // Fetch the last inserted ID
 $last_id_query = "SELECT MAX(id) as last_id FROM tbl_student_registration";
+echo "<script>console.log('". addslashes($last_id_query) ."');</script>";
 $last_id_result = mysqli_query($conn, $last_id_query);
 $row = mysqli_fetch_assoc($last_id_result);
 $last_id = $row['last_id'];

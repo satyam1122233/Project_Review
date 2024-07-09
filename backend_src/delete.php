@@ -4,6 +4,9 @@
 
     $id = $_REQUEST['id'];
 
+    //    $id = $_POST['id'];
+
+
 
     $sql = "DELETE FROM `tbl_student_registration` WHERE id=$id";
 
